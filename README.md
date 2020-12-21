@@ -1,4 +1,7 @@
 # python Flask
+
+Flask是輕量級的網頁伺服器，但一樣有完整強大的功能。
+
 1. [安裝Flask](./安裝Flask)
 2. 基本應用程式架構
 3. Jinja2樣板
