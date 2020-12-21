@@ -1,5 +1,5 @@
 # python Flask
-1. 安裝Flash
+1. [安裝Flask](./安裝Flask)
 2. 基本應用程式架構
 3. Jinja2樣板
 4. 網頁表單
