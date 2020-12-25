@@ -67,6 +67,16 @@ $ flask run
 ![](./images/pic2.png)
 
 
+### Debug 模式
 
+Flask應用程式可以選擇開啟Debug模式和reloader模式。
+
+reloader模式是在任何的網站的任何內容有被更改並儲存時，Flash會立即重新啟動，保持最新的狀態。
+
+debug 模式是一個網頁工具，有程式有錯誤，直接顯示於網頁上。
+
+開啟debug模式:FLASK_DEBUG=1
+
+![](images/pic3.png)
 
 
