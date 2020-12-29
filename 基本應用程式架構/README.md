@@ -279,10 +279,10 @@ from flask import redirect
 from flask import abort
 @app.route('/user/<id>') 
 def get_user(id):
-user = load_user(id) 
-if not user:
-	abort(404)
-return '<h1>Hello, {}</h1>'.format(user.name)
+	user = load_user(id) 
+	if not user:
+		abort(404)
+	return '<h1>Hello, {}</h1>'.format(user.name)
 ```
 
 abort()不能傳回，abort()會丟出一個exception
