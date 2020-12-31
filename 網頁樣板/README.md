@@ -183,13 +183,13 @@ Base樣板內使用block語法，建立可以在衍生樣板內進行覆寫的�
 {% endblock %}
 ```
 
-## Bootstrap 整合至Flash-Bootstrap
+## Bootstrap 整合
 
 ```
 $ pip install flask-bootstrap
 ```
 
-### 使用Flash-Bootstrap範例,修改py檔
+### 使用FlasK-Bootstrap範例,修改py檔
 
 ```python
 from flask import Flask, render_template
