@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello! World!</title>
-</head>
-<body>
-<h1>Hello World!</h1>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %}Robert{% endblock %}
+{% block page_content %}
+<div class="page-header">
+    <h1>Hello, Flask</h1>
+    <p>當地日期和時間是: {{ moment(current_time).format('LLL') }}.</p>
+    <p>That was {{ moment(current_time).fromNow(refresh=True) }}</p>
+</div>
+{% endblock %}
