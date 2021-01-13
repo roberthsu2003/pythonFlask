@@ -87,3 +87,31 @@ DataRequired()是檢查使用者在這欄位上必需要填入任何值，不可
 | UUID | 驗證身份証的格式 |
 | AnyOf | 驗證在一組值內，必需有其中一個值 |
 | NoneOf | 驗證在一組值內，必需輸入值沒有一個包含在這一組值內|
+
+## 產生HTML的表單
+
+透過viewFunction,傳遞NameForm的實體給樣板，樣板接收到NameForm後，取出類別屬性(就是取出欄位實體)
+
+以下是在樣板內，使用NameForm實體form,取出欄位實體
+
+```
+<form method="POST">
+	{{ form.hidden_tag() }}
+	{{ form.name.label }} {{ form.name() }}
+	{{ form.submit() }}
+</form>
+```
+
+> 注意:
+>
+> form.hidden_tag()，會產生額外的隱藏欄位，這個隱藏欄位是為了預防CSRF(Cross Site Request Forgery)的詐騙行為
+
+在產生表單欄位時，可以加入一些額外的引數，來增加我們的Html的元素的屬性，例如id,class，以便給javascript或css使用
+
+```
+<form method="POST">
+	{{ form.hidden_tag() }}
+	{{ form.name.label }} {{ form.name(id='my-text-field') }}
+	{{ form.submit() }}
+</form>
+```
