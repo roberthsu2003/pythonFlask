@@ -171,3 +171,14 @@ def internal_server_error(e):
 ```
 
 form.validate_on_submit()，如果表單已經送出則傳出True,如果表單尚未傳出，則傳出False
+
+完成畫面
+
+![](./images/pic01.png)
+
+未輸入按Submit
+
+![](./images/pic02.png)
+
+輸入自已姓名並按下Submit
+![](./images/pic03.png)
