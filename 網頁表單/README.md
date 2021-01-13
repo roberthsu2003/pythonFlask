@@ -115,3 +115,59 @@ DataRequired()是檢查使用者在這欄位上必需要填入任何值，不可
 	{{ form.submit() }}
 </form>
 ```
+
+使用Flask-Bootstrap樣板, Flask-Bootstrap也有支援Flask-WTF，使用Flask_Bootstrap的quick_form()建立支援Flask_WTF的Bootstrap表單。
+
+```
+{% import "bootstrap/wtf.html" as wtf %}
+{{ wtf.quick_form(form) }}
+```
+
+下面是完整的網頁頁面
+```{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %} Flask_Robert {% endblock %}
+{% block page_content %}
+<div class="page-header">
+ <h1>Hello, {% if name %}{{name}}{% else %}Stranger{% endif %}!</h1>
+</div>
+{{wtf.quick_form(form)}}
+{% endblock %}
+```
+
+## View Function處理表單
+
+```python
+from hello import NameForm
+
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'security code'
+bootstrap = Bootstrap(app)
+moment = Moment(app)
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    name = None
+    form = NameForm()
+    if form.validate_on_submit():
+        name = form.name.data
+        form.name.data = ''
+    return render_template('index.html', form=form, name=name)
+
+
+@app.route('/user/<name>')
+def user(name):
+    return render_template('user.html',name=name)
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html'), 404
+
+@app.errorhandler(500)
+def internal_server_error(e):
+    return render_template('500.html'), 500
+    
+```
+
+form.validate_on_submit()，如果表單已經送出則傳出True,如果表單尚未傳出，則傳出False
