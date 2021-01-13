@@ -182,3 +182,9 @@ form.validate_on_submit()，如果表單已經送出則傳出True,如果表單�
 
 輸入自已姓名並按下Submit
 ![](./images/pic03.png)
+
+## 重新導向網頁和使用者Session
+
+目前網頁還是會有一些問題，只要是送出後，如果使用重新整理網頁，則會出現網頁的提示框，主要的原因就是因為使用POST request的關係，所以要解決這個問題就是將網頁重新導向這一頁，並且是使用GET的request. 這個決解方式有被稱為Post/Redirect/Get方式。
+
+由於重新導向的問題，使用都的name也要傳遞到導向的頁面，解決的方式就是使用使用者的Session,而使用者的Session就是將name資訊儲存在瀏覽器內。到達導向頁面後，再使用取出Session內的資料，Session也是以dictionary資訊儲存。
