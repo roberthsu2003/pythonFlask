@@ -1,5 +1,8 @@
 # 基本應用程式架構
 ## 初始化應用程式
+- 所有Flask的應用程式必需建立application的實體
+- web server 接收到使用者端的request，全部會傳遞給這個實體，這個動作就是Web Server Gateway Interface(WSGI)
+- app是Flask類別的實體
 
 ```python
 from flask import Flask
