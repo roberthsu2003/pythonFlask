@@ -1,8 +1,9 @@
 ## 安裝Flask
 
+-  建立虛擬環境
 
 ```
-$ pip install flask
+(venv) $ pip install flask
 ```
 
 ### 檢查目前虛擬環境已經安裝的套件
