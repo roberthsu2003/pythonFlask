@@ -85,7 +85,7 @@ debug 模式是一個網頁工具，有程式有錯誤，直接顯示於網頁�
 
 > 注意
 >
-> 如果要在程式來啟動debug模式，請使用 app.run(debut=True)
+> 如果要在程式來啟動debug模式，請使用 app.run(debug=True)
 
 ### 命令列說明
 
@@ -273,7 +273,7 @@ def index():
 from flask import redirect
 @app.route('/') 
 	def index():
-	return redirect('http://www.example.com')
+		return redirect('http://www.example.com')
 ```
 
 #### 特別的response物件 abort
