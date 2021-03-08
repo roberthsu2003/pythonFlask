@@ -200,6 +200,8 @@ $ pip install flask-bootstrap
 
 ### 使用FlasK-Bootstrap範例,修改py檔
 
+- 使用Bootstrap(app),將提供所有bootstrap的樣版，讓我們繼承
+
 ```python
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
@@ -257,20 +259,20 @@ def user(name):
 
 ### Flask-Bootstraps 基本的blocks
 
-| block名稱 | 外部Block |
+| block名稱 | 描述 |
 |:--|:--|
-| doc |  |
-| html | doc |
-| html_attribs | doc |
-| head | doc |
-| body | doc |
-| body_attribs | body |
-| title | head |
-| styles | head |
-| metas | head |
-| navbar | body |
-| content | body |
-| scripts | body |
+| doc | 全部的html文件 |
+| html | html tag內所有的元素內容 |
+| html_attribs | html tag 內的屬性 |
+| head | head tag內的內容 |
+| body | body tag 內所有的元素內容 |
+| body_attribs | body tag 內的屬性 |
+| title | title tag的內容 |
+| styles | css定義區域 |
+| metas | meta tag內的東西 |
+| navbar | 空的區域，自訂navbar的地方 |
+| content | 使用者自訂內容的區域 |
+| scripts | javascript定義的區域 |
 
 ### 增加自訂的css
 
