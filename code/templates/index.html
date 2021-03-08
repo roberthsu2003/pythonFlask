@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Hello! World!</title>
-</head>
-<body>
-<h1>Hello World!</h1>
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %} 索引 {% endblock %}
+{% block head %}
+    {{ super() }}
+    <style>
+
+    </style>
+{% endblock %}
+{% block body %}
+<h1>Hello, World!</h1>
+{% endblock %}

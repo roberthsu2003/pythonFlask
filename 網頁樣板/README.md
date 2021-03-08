@@ -88,7 +88,7 @@ Jinja2 的變數可以使用非常多不同的資料型態，下方為使用不�
 >
 表單的輸入不要使用safe
 
-## 判斷架構
+## Jinja2的判斷架構
 
 語法:
 
@@ -100,7 +100,7 @@ Jinja2 的變數可以使用非常多不同的資料型態，下方為使用不�
 {% endif %}
 ```
 
-## 迴圈架構
+## Jinja2的迴圈架構
 
 語法:
 
@@ -114,7 +114,8 @@ Jinja2 的變數可以使用非常多不同的資料型態，下方為使用不�
 
 ### Jinja2支援巨集(Marcos)
 
-語法:
+語法起始:{% macro render_comment(comment) %}
+語法結束:{% endmacro %}
 
 ```
 {% macro render_comment(comment) %} 
@@ -130,6 +131,8 @@ Jinja2 的變數可以使用非常多不同的資料型態，下方為使用不�
 
 巨集可以單獨儲存在一個html檔案內，下方的範例是marcos初儲存macros.html檔案內,使用import載入
 
+- import macro檔 
+
 ```
 {% import 'macros.html' as macros %}
 <ul>
@@ -143,11 +146,15 @@ Jinja2 的變數可以使用非常多不同的資料型態，下方為使用不�
 
 網頁可以使用組合的方式建立，部份會重覆使用的程式碼可以放在單獨的html檔案內，要使用時，使用include語法載入
 
+- include 局部的html
+
 ```
 {% include 'common.html'%}
 ```
 
 ### 繼承
+
+Base樣板內使用block語法，建立可以在衍生樣板內進行覆寫的區域，在下面的範例中，建立3個block,一個為head block ,title block, 一個為body block。 title block 在 head block內。
 
 先建立一個base樣版
 
@@ -165,9 +172,11 @@ Jinja2 的變數可以使用非常多不同的資料型態，下方為使用不�
 </html>
 ```
 
-Base樣板內使用block語法，建立可以在衍生樣板內進行覆寫的區域，在上面的範例中，建立3個block,一個為head block ,title block, 一個為body block。 title block 在 head block內。
 
-使用語法extends繼承base樣板，語法如下
+
+使用語法extends繼承base樣板，語法如下:
+
+- {{super()}}是參考繼承的內容
 
 ```
 {% extends "base.html" %}
