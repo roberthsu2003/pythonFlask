@@ -153,6 +153,12 @@ Jinja2 的變數可以使用非常多不同的資料型態，下方為使用不�
 ```
 
 ### 繼承
+- block 語法:
+
+```
+{% block 自訂名稱 %}
+{% endblock %}
+```
 
 Base樣板內使用block語法，建立可以在衍生樣板內進行覆寫的區域，在下面的範例中，建立3個block,一個為head block ,title block, 一個為body block。 title block 在 head block內。
 
