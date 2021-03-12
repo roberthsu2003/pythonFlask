@@ -17,3 +17,113 @@
 
 ### 2. 根據不同作業系統安裝 Heroku CLI
 
+### 3. 專案部份:
+
+#### 建立main.py主程式
+
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+
+@app.route('/')
+def hello():
+    return f'Hello, Heroku!'
+```
+
+#### 建立Procfile檔
+
+ - 如何運行 Web App，在這邊我們使用 gunicorn 這個 WSGI Server。並輸入下面內容
+
+```
+# main是主程式的檔名，app是main.py內的實體app
+web: gunicorn main:app
+```
+
+#### 建立runtime.txt python使用的版本
+
+```
+python-3.8.8
+```
+
+#### 建立requirements.txt
+
+- Python 套件清單，告訴 Heroku 需要安裝哪些套件（主要有 gunicorn、flask 我們也可以設定需要安裝的版本）
+
+```
+gunicorn
+flask
+```
+
+### 部署至heroku部份:
+#### 登入
+
+```
+>>> heroku login
+```
+
+#### 在專案資料夾下初始化 git
+
+```
+>>> git init
+```
+
+#### 建立heroku上的app名稱
+
+```
+#app名稱可以使用的特殊字元只有 - 
+>>> heroku create <appname>
+```
+
+#### 設定目前heroku對應的app名稱
+
+```
+>>> heroku config:set FLASK_APP=main.py
+```
+
+#### 在本端測試
+
+```
+>>> heroku local:run main deploy
+>>> heroku local
+```
+
+#### 透過 $ heroku git:remote 新增 app repo 為遠端repository
+
+```
+#查看說明
+>>> heroku git -h
+
+#建立remote
+#專案名稱是指在heroku上剛建立的app名稱
+>>> heroku git:remote -a 專案名稱
+```
+
+#### git commit並push
+
+```
+# 將所有更動提交到 staging
+$ git add .
+# 將所有變動 commit 並加上訊息
+$ git commit -a -m "第一次commit"
+# 推送到遠端
+$ git push heroku master
+```
+
+#### 查看log
+
+```
+>>> heroku logs --tail
+```
+
+#### 更新
+
+```
+# 將所有更動提交到 staging
+$ git add .
+# 將所有變動 commit 並加上訊息
+$ git commit -a -m "更新內容"
+# 推送到遠端
+$ git push heroku master
+```
