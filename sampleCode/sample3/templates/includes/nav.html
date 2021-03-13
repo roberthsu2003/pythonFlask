@@ -1,0 +1,28 @@
+<nav id="nav">
+
+    <ul class="links">
+        {% if name=='main'%}
+         <li class="active"><a href="{{url_for('index')}}">This is Massively</a></li>
+        {% else %}
+         <li><a href="{{url_for('index')}}">This is Massively</a></li>
+        {% endif %}
+
+         {% if name=='generic'%}
+        <li class="active"><a href="{{url_for('generic')}}">Generic Page</a></li>
+        {% else %}
+        <li><a href="{{url_for('generic')}}">Generic Page</a></li>
+        {% endif %}
+
+        {% if name=='elements' %}
+        <li class="active"><a href="{{url_for('elements')}}">Elements Reference</a></li>
+        {% else %}
+        <li><a href="{{url_for('elements')}}">Elements Reference</a></li>
+        {% endif %}
+    </ul>
+    <ul class="icons">
+        <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+        <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+        <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+        <li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+    </ul>
+</nav>
