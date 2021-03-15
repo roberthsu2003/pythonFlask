@@ -1,0 +1,52 @@
+{% extends 'bootstrap/base.html' %}
+{% block title %} 提供API的說明 {% endblock %}
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>關於API說明</h1>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">取得台北市行政區域名字API</h3>
+        </div>
+        <div class="panel-body">
+            <h4>https://xxxx.xxx.xxx/youbike</h4>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">取得台北市各行政區域內youbike站場資訊</h3>
+        </div>
+        <div class="panel-body">
+            <h4>https://xxxx.xxx.xxx/youbike/行政區域名稱</h4>
+        </div>
+
+        <div class="list-group">
+            <a href="#" class="list-group-item">
+                ar:地址
+            </a>
+            <a href="#" class="list-group-item">
+                bemp:空位數量
+            </a>
+            <a href="#" class="list-group-item">
+                lat:緯度座標
+            </a>
+            <a href="#" class="list-group-item">
+                lng:經度座標
+            </a>
+            <a href="#" class="list-group-item">
+                sna:站名
+            </a>
+            <a href="#" class="list-group-item">
+                tot:可停放總車數
+            </a>
+            <a href="#" class="list-group-item">
+                mday:日期時間
+            </a>
+            <a href="#" class="list-group-item">
+                sbi:可借數量
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}
