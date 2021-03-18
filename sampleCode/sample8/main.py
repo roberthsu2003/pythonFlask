@@ -1,6 +1,7 @@
 from flask import Flask,jsonify,render_template
 from flask_bootstrap import Bootstrap
 import datasource
+import gjun
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 app.config['JSON_AS_ASCII'] = False
@@ -22,3 +23,8 @@ def get_simpleData(areaName):
         return jsonify({'data':simpleData})
     else:
         return jsonify({'data':'error'}), 404
+
+
+@app.route('/gjun',methods=['GET'])
+def get_allStation():
+    return jsonify(gjun.json)
