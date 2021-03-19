@@ -1,5 +1,11 @@
 # 網頁表單
 
+網頁樣版和網頁表單的運作方式剛好相反，前者是呈現資訊給使用者，後者是使用者將資訊傳送給伺服器。網頁表單將來探討由使用者網頁傳送到使用者端的流程和處理方式。
+
+建立網頁表單，可以讓使用都輸入資訊並提交給伺服器，大部份使用表單提交的方式是使用POST request, 所有向伺服器提出的需求全部都是儲存於request物件內，如果是POST request,透過request.form可以取出所有提交資料。
+
+FLask-WTF套件的工作，就是建立HTML表單和驗證使用者輸入的資訊。
+
 - 安裝Flask-WTF套件
 
 ```
@@ -20,6 +26,8 @@ app.config['SECRET_KEY'] = '不好猜的文字'
 
 app.config是個dictionary，目的是為了儲存整個app的設定，更改內容來達到設定整個網站的目的。
 
+secret key是為了預防偽造的request(cross-site request forgery(CSRF))攻擊，Flask-WTF會為所有HTML表單產生安全的憑證，並且儲存在使用者的session內，要產生安全憑證，必需利用secret key。所以只要有使用flask-WTF就必需在應用程式內設定secret key
+
 這個環境調整變數也可以儲存成為檔案，利用專用的方法將設定檔載入
 
 > 注意:
@@ -27,8 +35,8 @@ app.config是個dictionary，目的是為了儲存整個app的設定，更改內
 > secret_key標準和安全的方式是儲存在環境變數內，而不是放在程式碼中，後面將會討論
 
 
-## Fomr 類別
-使用Flask-WTF, 每一個web form的形成是透過一個繼承於FlaskForm的類別。這個類別內定義所有表單所需要的表單欄位，每一個欄位都有各自的對應物件，每一個欄位都有一個validator參數,這個參數的值必需是一個list,list內要放所需要的function，function是用來驗證使用者輸入的內容是否合法。
+## Form 類別
+使用Flask-WTF, 每一個web form的形成是透過一個繼承於FlaskForm的類別。所以要使用WTF的表單功能，就必需要自訂一個繼承於FLaskForm的類別，這個類別內定義所有表單所需要的表單欄位，每一個欄位都有各自的對應物件，每一個欄位都有一個validator參數,這個參數的值必需是一個list,list內要放所需要的function，function是用來驗證使用者輸入的內容是否合法。
 
 建立一個繼承於FlaskForm的NameForm類別，並加入文字欄位和傳出按鈕
 

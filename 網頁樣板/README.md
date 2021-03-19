@@ -286,7 +286,7 @@ def user(name):
 {% block styles %}
 {{super()}}
 <link rel="stylesheet"
-      href="{{url_for('.static', filename='mystyle.css')}}">
+      href="{{url_for('static', filename='mystyle.css')}}">
 {% endblock %}
 ```
 
@@ -294,7 +294,7 @@ def user(name):
 
 ```
 {% block scripts %}
-<script src="{{url_for('.static', filename='myscripts.js')}}"></script>
+<script src="{{url_for('static', filename='myscripts.js')}}"></script>
 {{super()}}
 {% endblock %}
 ```
@@ -320,7 +320,7 @@ def internal_server_error(e):
 	return render_template('500.html'), 500
 ```
 
-就像view function一樣，但是return是一組tuple，tuple最後的內容是一個整數，這整數必需是錯誤的代碼。
+就像view function一樣，return是一組tuple，最後一個元素可以省略，預設值是200，可以自訂數值，此整數必需是錯誤的代碼。
 
 404.html和500.html非常相似，由其是上方的導覽列是一致的，此時可以利用jinja2的繼承功能，先建立`templates/base.html`，此頁面繼承`bootstrap/base.html`頁面，此時`templates/base.html`就有bootstrape的功能，並在`templates/base.html`內加入相同部份的內容，`505.html`和`400.html`再繼承`templates/base.html`,並各自加入不同的內容。
 
@@ -399,8 +399,7 @@ def internal_server_error(e):
 
 ## Links
 
-建立動態的url連結，使用url_for()function，將可以利用應用程式內的資料，使用程式碼的方式建立動態連結。
-
+建立動態的url連結，使用url_for() function，將可以使用程式碼的方式建立動態連結。
 url_for()內第一個參數使用view function的名稱，但必需是字串類型。以此範例如果是url_for('index'), 則會傳出相對路徑 "/"，如果使用url_for('index', external=True), 則會傳出絕對路徑 "http://localhost:5000/"
 
 以`def user(name):`必需動態方式傳入name,此時參數就必需加上引數名稱name=value,例如`url_for('user', name='robert' _external=True)`, 傳出的路徑是`http://localhost:5000/user/john`
@@ -409,7 +408,7 @@ url_for()內第一個參數使用view function的名稱，但必需是字串類�
 
 ## 靜態網頁
 
-網頁不僅是使用python和樣板建立，許多時候需要使用images, javsScript, css的檔案。
+網頁不是僅使用python和樣板建立，許多時候需要使用images, javsScript, css的檔案。
 
 `static`關鍵字將參考到static目錄，例如使用url_for('static', filename='css/style.css', _external=True)將會傳出http://localhost:5000/static/css/style.css
 
