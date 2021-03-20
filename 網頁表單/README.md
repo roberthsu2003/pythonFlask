@@ -195,4 +195,99 @@ form.validate_on_submit()，如果表單已經送出則傳出True,如果表單�
 
 目前網頁還是會有一些問題，只要是送出後，如果使用重新整理網頁，則會出現網頁的提示框，主要的原因就是因為使用POST request的關係，所以要解決這個問題就是將網頁重新導向這一頁，並且是使用GET的request. 這個決解方式有被稱為Post/Redirect/Get方式。
 
-由於重新導向的問題，使用都的name也要傳遞到導向的頁面，解決的方式就是使用使用者的Session,而使用者的Session就是將name資訊儲存在瀏覽器內。到達導向頁面後，再使用取出Session內的資料，Session也是以dictionary資訊儲存。
+由於重新導向的問題，name也要傳遞到導向的頁面，解決的方式就是使用Session,而使用者的Session就是將name資訊儲存在瀏覽器內。到達導向頁面後，再使用取出Session內的資料，Session也是以dictionary資訊儲存。
+
+```python
+from flask import Flask,render_template,session,redirect,url_for
+from flask_bootstrap import Bootstrap
+from flask_wtf import FlaskForm
+from wtforms import StringField,SubmitField
+from wtforms.validators import DataRequired
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = '2uyxdedxgjux8jkKUNkkjwesm'
+bootstrap = Bootstrap(app)
+
+class NameForm(FlaskForm):
+    name = StringField("請輸入姓名?",validators=[DataRequired()])
+    submit = SubmitField("提交")
+
+@app.route('/',methods=['GET','POST'])
+def index():
+    form = NameForm()
+    if form.validate_on_submit():
+        session['name'] = form.name.data
+        return redirect(url_for('index'))
+    return render_template('index1.html',form=form,name=session.get('name'))
+```
+
+> 注意:session被取出時必需使用get()的方法，原因是如果使用dictionary取出的語法session['name']，第一次進入時，並沒有name，會產生錯誤，造成程式中斷，但使用get('name')的語法，如果沒有這個name，則只會傳出None。
+
+## 提示訊息
+
+提示訊息是要產生一個提醒使用者的訊息，目前這頁面還有的問題是如果使用者一直更改名字，並重新提交，先前我們已經接收到相同的訊息時，此時必需提示使用者，將程式修改如下:
+
+```
+from flask import Flask,render_template,session,redirect,url_for,flash
+from flask_bootstrap import Bootstrap
+from flask_wtf import FlaskForm
+from wtforms import StringField,SubmitField
+from wtforms.validators import DataRequired
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = '2uyxdedxgjux8jkKUNkkjwesm'
+bootstrap = Bootstrap(app)
+
+class NameForm(FlaskForm):
+    name = StringField("請輸入姓名?",validators=[DataRequired()])
+    submit = SubmitField("提交")
+
+@app.route('/',methods=['GET','POST'])
+def index():
+    form = NameForm()
+    if form.validate_on_submit():
+        old_name = session.get('name')
+        if old_name is not None and old_name != form.name.data:
+            flash('你已經更改了姓名')
+        session['name'] = form.name.data
+        return redirect(url_for('index'))
+    return render_template('index1.html',form=form,name=session.get('name'))
+
+```
+
+```
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %} 表單網頁 {% endblock %}
+{% block navbar %}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+        Brand
+      </a>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                aria-hidden="true">&times;</span></button>
+        <strong>Warning!</strong>{{message}}
+    </div>
+
+    {% endfor %}
+    <div class="page-header">
+    <h1>Hello, {% if name %} {{ name }} {% else %} Stranger {% endif %}</h1>
+    </div>
+</div>
+
+
+{{ wtf.quick_form(form) }}
+
+{% endblock %}
+```
