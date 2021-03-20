@@ -10,6 +10,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/code/hello3.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/code/templates/index1.html">
           <value>
             <Attribute>
