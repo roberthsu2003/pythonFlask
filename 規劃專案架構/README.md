@@ -1,10 +1,278 @@
 # 規劃專案架構
 制作簡單的網站，或許一個應用程式檔案就可以了，但這樣這網站就不容易擴充，這個應用程式內的程式碼也會非常的多和複雜。
 
+
+## 一個最簡單專案
+```
+|-project/
+	|-app/
+		|-templates/
+		|-static
+		root.py
+		form.py
+		models.py
+```
+
+### root.py
+
+```python
+from flask import Flask
+
+
+app = Flask(__name__)
+@app.route('/',methods=['GET'])
+def index():
+    return '<h1>Hello! Flask</h1>'
+    
+@app.route('/login',methods=['GET'])
+def login():
+    return '<h1>登入頁面</h1>'
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return "<h1>沒有發現網頁</h>",404
+
+if __name__ == "__main__":
+    app.run(debug=True)e)
+```
+
+## 當專案愈來愈大時，建立處理login功能和處理錯誤的error module
+- 將錯誤功能交給error.py
+- 將錯誤功能交給login.py
+
+```
+|-project/
+	|-app/
+		|-templates/
+		|-static/
+		root.py
+		login.py
+		error.py
+		form.py
+		models.py
+```
+
+### 將error功能交給error.py
+
+#### root.py
+
+```python
+from flask import Flask
+import errors
+
+app = Flask(__name__)
+@app.route('/',methods=['GET'])
+def index():
+    return '<h1>Hello! Flask</h1>'
+
+@app.route('/login',methods=['GET'])
+def login():
+    return '<h1>登入頁面</h1>'
+
+```
+
+
+#### error.py
+
+```python
+from root import app
+@app.errorhandler(404)
+def page_not_found(e):
+    return "<h1>沒有發現網頁</h>",404
+```
+
+#### flask run時發生circular錯誤
+
+```
+ImportError: cannot import name 'app' from partially initialized module 'root' (most likely due to a circular import) 
+```
+
+> 原因在
+
+> root.py內import error
+
+> error.py內from root import app
+
+> 互相import導至於無限循環import
+
+
+#### 解法方法1:
+將app透過參數傳至error內
+
+#### root.py
+
+```python
+from flask import Flask
+import errors
+
+app = Flask(__name__)
+errors.init_app(app)
+
+@app.route('/',methods=['GET'])
+def index():
+    return '<h1>Hello! Flask</h1>'
+
+@app.route('/login',methods=['GET'])
+def login():
+    return '<h1>登入頁面</h1>'
+```
+
+#### error.py
+
+```python
+def init_app(app):
+    @app.errorhandler(404)
+    def page_not_found(e):
+        return "<h1>沒有發現網頁</h>", 404
+```
+
+
+#### 解法方法2:使用Blueprint
+
+##### 改變結構
+
+```
+|-project/
+	|-app/
+		|-templates/
+		|-static/
+		|-login/
+			main.py
+		|-error/
+			main.py
+		root.py
+		form.py
+		models.py
+```
+
+##### root.py
+
+```python
+from flask import Flask
+from errors.main import errors
+from login.main import login
+
+app = Flask(__name__)
+app.register_blueprint(errors)
+app.register_blueprint(login)
+
+@app.route('/',methods=['GET'])
+def index():
+    return '<h1>Hello! Flask</h1>'
+
+if __name__ == "__main__":
+    app.run(debug=True)
+```
+
+##### error/main.py
+
+```python
+from flask import Blueprint
+errors = Blueprint('errors',__name__)
+
+
+@errors.app_errorhandler(404)
+def page_not_found(e):
+    return "<h1>沒有發現網頁</h>", 404
+
+```
+
+##### login/main.py
+
+```python
+from flask import Blueprint
+login = Blueprint('login',__name__)
+
+@login.route('/login', methods=['GET'])
+
+def user_login():
+    return "<h1>登入畫面</h1>"
+
+```
+
+#### 解法方法3:使用Blueprint(在login目錄和error目錄建立__init__)
+
+##### 架構
+
+```
+|-project/
+	|-app/
+		|-templates/
+		|-static/
+		|-login/
+			__init__.py
+			main.py
+		|-error/
+			__init__.py
+			main.py
+		root.py
+		form.py
+		models.py
+```
+
+##### root.py
+
+```python
+from flask import Flask
+from errors import errors
+from login import login
+
+app = Flask(__name__)
+app.register_blueprint(errors)
+app.register_blueprint(login)
+
+@app.route('/',methods=['GET'])
+def index():
+    return '<h1>Hello! Flask</h1>'
+
+if __name__ == "__main__":
+    app.run(debug=True)
+```
+
+##### error目錄__init__.py
+
+```python
+from flask import Blueprint
+errors = Blueprint('errors',__name__)
+from . import main
+```
+
+##### error目錄main.py
+
+```python
+from . import errors
+
+@errors.app_errorhandler(404)
+def page_not_found(e):
+    return "<h1>沒有發現網頁</h>", 404
+
+``` 
+
+##### login目錄__init__.py
+
+```python
+from flask import Blueprint
+login = Blueprint('login',__name__)
+
+from . import main
+```
+
+##### login目錄main.py
+
+```python
+from . import login
+
+@login.route('/login', methods=['GET'])
+
+def user_login():
+    return "<h1>登入畫面</h1>"
+```
+
+
 建立一個應用程式的專案就需要規畫專案的架構
 
 ```
-|-project
+|-project/
 	|-app/
 		|-templates/
 		|-static/
