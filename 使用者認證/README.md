@@ -34,4 +34,104 @@ Werkzeuge的安全模組可以完成雜湊密碼的工作。雜湊密碼主要�
 
 這個function, 將是從資料庫取出雜湊密碼並且比對使用者密碼，如果是正確的將會傳回True。
 
+#### project1/app/models.py
+
+```python
+class User(db.Model):
+    __tablename__ = "users"
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(64), unique=True, index=True)
+    password_hash = db.Column(db.String(128),nullable=False)
+
+    @property
+    def password(self):
+        raise AttributeError('密碼無法讀取')
+
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def verify_password(self,password):
+        return check_password_hash(self.password_hash, password)
+
+    def __repr__(self):
+        return '<User %r>' % self.username
+```
+
+### 使用flask shell驗證
+
+```
+(venv) $ flask shell
+>>> from app.models import User
+>>> user1 = User()
+>>> user1.username = 'robert'
+>>> user1.password
+Traceback (most recent call last):
+  File "<console>", line 1, in <module>
+  File "/Users/roberthsu2003/Documents/GitHub/pythonFlask/使用者認證/project1/app/models.py", line 13, in password
+    raise AttributeError('密碼無法讀取')
+AttributeError: 密碼無法讀取
+
+>>> user1.password='a1213'
+>>> user1.password_hash
+'pbkdf2:sha256:150000$6fLPIEMQ$6edc025b8517868be8e1188b002a5539e69f63d94eb6c3a753df52aadacd46de'
+>>> user1.verify_password('a1213')
+True
+>>> user1.verify_password('a4567')
+False
+>>> user2 = User()
+>>> user2.username='jenny'
+>>> user2.password = 'a1213'
+>>> user2.password_hash
+'pbkdf2:sha256:150000$Gdqbp2MA$311ece94314edb033d2b806feb3e6f997ea208f830de0d7613afebc3a0d2b99c'
+```
+
+> 相同的密碼,hash是不一樣的
+
+## 建立一個auth Blueprint
+
+### 架構
+
+```
+|-project1/
+	main.py
+	|-app/
+		__init__.py
+		data.sqlite
+		models.py
+		|-auth/
+			__init__.py
+			views.py
+		|-templates/
+			|-auth/
+				login.html
+```
+
+### app/auth/__init__.py
+
+```python
+from flask import Blueprint
+auth = Blueprint('auth',__name__)
+from . import views
+```
+
+### app/auth/view.py
+
+```python
+from flask import render_template
+from . import auth
+
+@auth.route('/login')
+def login():
+    return render_template('auth/login.html')
+```
+
+### app/__init__.py
+
+```python
+from .auth import auth as auth_blueprint
+app.register_blueprint(auth_blueprint,url_prefix='/auth')
+```
+
+## 使用Flask-Login認證
 

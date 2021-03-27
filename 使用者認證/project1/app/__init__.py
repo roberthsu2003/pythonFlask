@@ -8,6 +8,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'da
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
+from .auth import auth as auth_blueprint
+app.register_blueprint(auth_blueprint,url_prefix='/auth')
+
 @app.route("/")
 def index():
     return "Hello!Jenny"
