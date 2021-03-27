@@ -17,6 +17,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/code/project/app/login/main.py">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
         <entry key="/code/templates/index1.html">
           <value>
             <Attribute>

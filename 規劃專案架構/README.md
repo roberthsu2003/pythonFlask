@@ -268,6 +268,87 @@ def user_login():
     return "<h1>登入畫面</h1>"
 ```
 
+## Blueprints 進階參數設定
+
+### url_prefix參數
+
+```python
+app.register_blueprint(login, url_prefix='/xxx')
+```
+
+http://127.0.0.1/xxx/login
+
+### static_folder,template_foler
+
+1. 程式碼修變
+
+```python
+errors = Blueprint('errors',__name__,static_folder='static',template_folder='templates')
+
+login = Blueprint('login',__name__,static_folder='static',template_folder='templates')
+```
+
+2. 架構更新
+
+```
+|-project/
+	|-app/
+		|-templates/
+			|-login/
+				index.html
+			|-error/
+				error.html
+		|-static/
+			|-login/
+				xxx.css
+			
+		|-login/
+			__init__.py
+			main.py			
+		|-error/
+			__init__.py
+			main.py			
+		root.py
+		form.py
+		models.py
+```
+
+3 templates資料夾的呼叫
+
+```python
+#root.py
+render_template('index.html')
+
+#login/main.py
+render_template("login/index.html")
+
+#error/main.py
+render_template('errors/index.html')
+```
+
+4 static資料夾的呼叫
+
+```
+#templates/index.html
+{{ url_for('static',filename='Akihabara.jpg')}}
+
+#templates/errors/index.html
+{{ url_for('static',filename='errors/Berlin.jpg')}}
+
+#templates/login/index.html
+{{ url_for('static',filename='login/Chiba.jpg')}}
+```
+
+5 連結
+
+```
+#templates/index.html
+{{url_for('login.user_login')}}
+
+#templates/login/index.html
+{{ url_for('index')}}
+```
+
 
 建立一個應用程式的專案就需要規畫專案的架構
 
@@ -406,8 +487,7 @@ def create_app(config_name):
     return app
 ```
 
-## 在Blueprint實作應用程式工廠
-- 定義，關聯，使用，註冊
+
 
 
 

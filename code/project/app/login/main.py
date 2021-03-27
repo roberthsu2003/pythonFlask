@@ -1,9 +1,10 @@
 from . import login
+from flask import render_template
 
 @login.route('/login', methods=['GET'])
 
 def user_login():
-    return "<h1>登入畫面</h1>"
+    return render_template("login/index.html")
 
 
 
