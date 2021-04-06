@@ -186,5 +186,42 @@ login_manager = LoginManager()
 login_manager.login_view = 'auth.login' login_manager.init_app(app)
 ```
 
-### 
+最終必需指定一個function,是當Flask-login需要從資料庫取出使用者的資料。
 
+```python
+#app/models.py
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+```
+
+### 保護頁面(需要login)
+
+decorators是可以串接在一起的，下面的程式可以想像同時註冊一個頁面，也同時註冊這個頁面是受保護的。順序不可以相反，會產生錯誤。沒有登入過的使用者將被導向Login頁面。
+
+```python
+#app/__init__.py
+
+from flask_login import login_required
+@app.route('/secret')
+@login_required
+def secret():
+    return "只有認證通過的使用者可以看到這個頁面"
+```
+
+### 增加一個Login-Form
+
+```python
+#app/auth/models.py
+
+from flask_wtf import FlaskForm
+from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms.validators import DataRequired, Length, Email
+
+class LoginForm(FlaskForm):
+    email = StringField('Email', validators=[DataRequired, Length(1,64),Email])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField("Keep me login in")
+    submit = SubmitField("Log In")
+```

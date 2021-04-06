@@ -1,10 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-</head>
-<body>
-<h1>Login</h1>
-</body>
-</html>
+{% extends "auth/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}
+login
+{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Login</h1>
+</div>
+<div class="col-md-4">
+    {{ wtf.quick_form(form) }}
+</div>
+{% endblock %}

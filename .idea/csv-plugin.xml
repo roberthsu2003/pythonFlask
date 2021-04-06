@@ -45,6 +45,13 @@
             </Attribute>
           </value>
         </entry>
+        <entry key="/使用者認證/project1/app/templates/auth/login.html">
+          <value>
+            <Attribute>
+              <option name="separator" value="," />
+            </Attribute>
+          </value>
+        </entry>
       </map>
     </option>
   </component>
