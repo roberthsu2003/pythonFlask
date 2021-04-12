@@ -1,8 +1,8 @@
 from flask import render_template,redirect,request,url_for,flash
-from flask_login import login_user
+from flask_login import login_user, login_required, logout_user
 from . import auth
-from .forms import LoginForm
-from ..models import User
+from .forms import LoginForm,RegistrationForm
+from ..models import User,db
 from .. import login_manager
 
 @login_manager.user_loader
@@ -23,3 +23,24 @@ def login():
             return redirect(next)
         flash("不合法的使用者和密碼")
     return render_template('auth/login.html',form=form)
+
+@auth.route('/logout')
+@login_required
+def logout():
+    login_user()
+    flash("You have been logged out.")
+    return redirect(url_for('index'))
+
+@auth.route('/register', methods=['GET', 'POST'])
+def register():
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        user = User(email=form.email.data,
+                    username=form.username.data,
+                    password=form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('You can now login.')
+        return redirect(url_for('auth.login'))
+    return render_template('auth/register.html', form=form)
+

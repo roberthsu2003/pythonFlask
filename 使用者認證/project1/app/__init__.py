@@ -1,11 +1,11 @@
 import os
-from flask import Flask
+from flask import Flask,render_template
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+
 login_manager = LoginManager()
 login_manager.login_view = 'auth.login'
-
 bootstrap = Bootstrap()
 
 db = SQLAlchemy()
@@ -24,11 +24,13 @@ def create_app():
     # Flask-Login
      # 告知果到保護的頁面必需到Blueprint.function
     login_manager.init_app(app)
+
+
     bootstrap.init_app(app)
 
     @app.route("/")
     def index():
-        return "Hello!Jenny"
+        return render_template('index.html')
 
     from flask_login import login_required
     @app.route('/secret')

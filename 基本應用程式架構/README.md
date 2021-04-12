@@ -2,14 +2,23 @@
 ## 初始化應用程式
 - 所有Flask的應用程式必需建立application的實體
 - web server 接收到使用者端的request，全部會傳遞給這個實體，這個動作就是Web Server Gateway Interface(WSGI)
-- app是Flask類別的實體
+- application其實就是Flask類別的實體
+
 
 ```python
 from flask import Flask
 app = Flask(__name__)
 ```
 
-## 規畫路徑
+> __name__非常重要，最主要是讓應用程式知道根目錄在此。
+
+## Route 和 View Function的關係
+
+使用者端透過瀏覽器送出一個request物件給web Server, web Server馬上將request傳送給應用程式。但Flask應用程式依據URL知道那一個view function要被執行，所以開發者必需設定不同URL對應不同的view function, 這樣的對應關系，我們稱為route
+
+定義一個應用程式的route, 最方便的方式是使用app.route的decorator
+
+> decorator可以想像是註冊一個function, 當有特定事件發生時，則會執行這個被註冊的function
 
 ```python
 from flask import Flask
@@ -21,7 +30,11 @@ def index():
     return '<h1>Hello Flask! </h1>'
 ```
 
+> 上面就是透過app.route('/')decorator 註冊index()為網站根目錄將被執行的function。
+
 ## 規畫動態路徑
+
+利用在route的參數中，使用<>將部份URL網址的名稱成為變數，並且可以傳遞給view function。
 
 ```python
 @app.route('/user/<name>')
