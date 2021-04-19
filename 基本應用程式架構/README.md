@@ -12,6 +12,22 @@ app = Flask(__name__)
 
 > __name__非常重要，最主要是讓應用程式知道根目錄在此。
 
+## 建立學習網頁的基本應用程式架構
+
+```python
+from flask import Flask
+from flask import render_template
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return render_template("index.html")
+
+if __name__ == "__main__":
+    app.debug = True
+    app.run()
+```
+
 ## Route 和 View Function的關係
 
 使用者端透過瀏覽器送出一個request物件給web Server, web Server馬上將request傳送給應用程式。但Flask應用程式依據URL知道那一個view function要被執行，所以開發者必需設定不同URL對應不同的view function, 這樣的對應關系，我們稱為route
@@ -81,6 +97,7 @@ $ flask run
 ### 檢視動態路徑
 
 ![](./images/pic2.png)
+
 
 
 ### Debug 模式
