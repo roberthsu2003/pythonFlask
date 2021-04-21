@@ -1,16 +1,9 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "layoutTemplate.html"%}
+{% block title %}
+Index
+{% endblock %}
 
-    <!-- Bootstrap CSS -->
-    <link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet" >
-
-    <title>Hello, world!</title>
-  </head>
-  <body>
+{% block content %}
     <div class="container-md bg-light border text-center">
       <h1>Hello!World</h1>
 
@@ -33,10 +26,4 @@
         </div>
       </div>
     </div>
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="{{ url_for('static',filename='js/bootstrap.bundle.min.js') }}" ></script>
-
-
-  </body>
-</html>
+{% endblock %}

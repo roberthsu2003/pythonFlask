@@ -1,45 +1,32 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+{% extends "layoutTemplate.html"%}
+{% block title %}
+EqualWidth
+{% endblock %}
 
-    <!-- Bootstrap CSS -->
-    <link href="{{ url_for('static',filename='css/bootstrap.min.css') }}" rel="stylesheet" >
+{% block content %}
+<div class="container-md bg-light border text-center">
+    <h1>Hello!World</h1>
 
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <div class="container-md bg-light border text-center">
-      <h1>Hello!World</h1>
-
-      <div class="row">
+    <div class="row">
         <div class="col border">
-          1 of 2
+            1 of 2
         </div>
         <div class="col border">
-          1 of 2
+            1 of 2
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col border">
-          1 of 3
-        </div>
-        <div class="col border">
-          2 of 3
-        </div>
-
-        <div class="col border">
-          3 of 3
-        </div>
-      </div>
     </div>
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="{{ url_for('static',filename='js/bootstrap.bundle.min.js') }}" ></script>
+    <div class="row">
+        <div class="col border">
+            1 of 3
+        </div>
+        <div class="col border">
+            2 of 3
+        </div>
 
-
-  </body>
-</html>
+        <div class="col border">
+            3 of 3
+        </div>
+    </div>
+</div>
+{% endblock %}
