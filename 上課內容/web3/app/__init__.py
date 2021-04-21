@@ -5,4 +5,8 @@ def createApp():
     @app.route("/")
     def index():
         return render_template("index.html")
+
+    @app.route("/equalWidth")
+    def equalWidth():
+        return render_template("equalWidth.html")
     return app
