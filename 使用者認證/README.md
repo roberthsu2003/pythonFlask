@@ -8,7 +8,7 @@ python有非常多好的認證擴充程式，但沒有一個可以做到所有�
 
 - Flask-Login:管理使用者的登入和使用者的session
 - Werkzeug:密碼的雜湊和驗證
-- itsdangerous:加密和驗證
+- itsdangerous:產生安全加密密碼和驗證
 
 認證機制可以整合到以下的套件
 
