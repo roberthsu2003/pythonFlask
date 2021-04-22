@@ -17,7 +17,37 @@
 
 
 {% block body %}
-<h1>
-    我是body
-</h1>
+<div class="container-md">
+    <div class="row">
+        <div class="col">
+            <h1>Hello! Bootstrap!</h1>
+        </div>
+    </div>
+    <!-- 一欄設固定寬 -->
+    <div class="row">
+        <div class="col border">
+            1 of 3
+        </div>
+        <div class="col-6 border">
+            2 of 3 (wider)
+        </div>
+
+        <div class="col border">
+            3 of 3
+        </div>
+    </div>
+    <!-- 一欄設固定寬 -->
+    <div class="row">
+        <div class="col border">
+            1 of 3
+        </div>
+        <div class="col-5 border">
+            2 of 3 (wider)
+        </div>
+
+        <div class="col border">
+            3 of 3
+        </div>
+    </div>
+</div>
 {% endblock %}
