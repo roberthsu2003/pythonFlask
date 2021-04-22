@@ -9,5 +9,5 @@ def creatApp():
     @app.route("/username/<name>",methods=["GET","POST"])
     def username(name):
         print(f"Hello!{name}")
-        return render_template("name.html"),200
+        return render_template("name.html",name=name,greet="Hello!"),200
     return app
