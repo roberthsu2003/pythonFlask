@@ -5,4 +5,9 @@ def creatApp():
     @app.route("/",methods=["GET","POST"])
     def index():
         return render_template("index.html"),200
+
+    @app.route("/username/<name>",methods=["GET","POST"])
+    def username(name):
+        print(f"Hello!{name}")
+        return render_template("name.html"),200
     return app
