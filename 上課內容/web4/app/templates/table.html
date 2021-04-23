@@ -28,7 +28,11 @@ table-表格
         <tr>
           <th scope="row">{{loop.index}}</th>
           {% for score in student %}
-            <td>{{ score }}</td>
+            {% if score >= 60 %}
+              <td class="text-success">{{ score }}</td>
+            {% else %}
+              <td class="text-white bg-danger">{{ score }}</td>
+            {% endif %}
           {% endfor %}
 
         </tr>
