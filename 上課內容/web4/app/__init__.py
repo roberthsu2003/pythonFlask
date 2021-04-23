@@ -13,4 +13,8 @@ def creatApp():
     @app.route("/username/<name>",methods=["GET","POST"])
     def username(name):
         return render_template("username.html",name=name,greet="Hello!"),200
+
+    @app.route('/table')
+    def table():
+        return render_template("table.html")
     return app
