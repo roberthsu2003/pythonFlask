@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>userName</title>
-</head>
-<body>
-<h1>{{greet}}, {{name}}</h1>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}
+Columns-欄
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+{% endblock %}
+
+{% block body %}
+<div class="container-md">
+    <div class="row">
+        <div class="col border">
+            One of three columns
+        </div>
+
+        <div class="col border">
+            Two of three columns
+        </div>
+
+        <div class="col border">
+            Three of three columns
+        </div>
+
+    </div>
+</div>
+{% endblock %}
