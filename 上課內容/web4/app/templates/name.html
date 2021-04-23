@@ -144,6 +144,24 @@ Columns-欄
         </div>
     </div>
 
+    <div class="row">
+        <!--超出的自動包裝-->
+        <div class="col-9 border">.col-9</div>
+        <div class="col-4 border">.col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
+        <div class="col-6 border">.col-6<br>Subsequent columns continue along the new line.</div>
+    </div>
+
+    <div class="row">
+        <!--強迫中斷欄-->
+        <div class="col-6 col-sm-3 border">.col-6 .col-sm-3</div>
+        <div class="col-6 col-sm-3 border">.col-6 .col-sm-3</div>
+
+        <!-- Force next columns to break to new line -->
+        <div class="w-100"></div>
+
+        <div class="col-6 col-sm-3 border">.col-6 .col-sm-3</div>
+        <div class="col-6 col-sm-3 border">.col-6 .col-sm-3</div>
+    </div>
 
 
 </div>
