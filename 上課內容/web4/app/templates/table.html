@@ -12,7 +12,30 @@ table-表格
 <div class="container-md">
   <div class="row">
     <div class="col">
-      {{ students }}
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">座號</th>
+          <th scope="col">國文</th>
+          <th scope="col">英文</th>
+          <th scope="col">數學</th>
+          <th scope="col">地理</th>
+          <th scope="col">歷史</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for student in students %}
+        <tr>
+          <th scope="row">{{loop.index}}</th>
+          {% for score in student %}
+            <td>{{ score }}</td>
+          {% endfor %}
+
+        </tr>
+        {% endfor %}
+
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
