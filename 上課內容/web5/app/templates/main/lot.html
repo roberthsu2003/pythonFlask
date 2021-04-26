@@ -13,5 +13,9 @@
 
 
 {% block body%}
-<h1>Main Lot 區域 num={{ num }}</h1>
+{% for number in lot %}
+<div>{{number}}</div>
+{% endfor %}
+<h2>特別號</h2>
+<div>{{specialNum}}</div>
 {% endblock %}
