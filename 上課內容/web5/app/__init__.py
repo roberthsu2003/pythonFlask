@@ -2,7 +2,7 @@ from flask import Flask
 
 def createApp():
     app = Flask(__name__)
-    @app.route("/")
-    def index():
-        return "<h1>Hello! World!</h1>"
+    from .main import main as main_blueprint
+    app.register_blueprint(main_blueprint)
+
     return app
