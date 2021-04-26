@@ -13,16 +13,24 @@ Main lot
 
 
 {% block body%}
-{% for item in lots %}
-    <div>
-        第{{loop.index}}組
-    </div>
-    <div>
-        {% for num in item[0] %}
-        <div>{{num}}</div>
+<div class="container-md">
+    <div class="row">
+        {% for item in lots %}
+        <div class="col-sm-6 col-md-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">第{{loop.index}}組</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">一般號</h6>
+                    {% for num in item[0] %}
+                        <p class="card-text">{{num}}</p>
+                     {% endfor %}
+                    <h6 class="card-subtitle mb-2 text-muted">特別號</h6>
+                    <p class="card-text">{{item[1]}}</p>
+                </div>
+            </div>
+        </div>
         {% endfor %}
-        <h2>特別號</h2>
-        <div>{{item[1]}}</div>
     </div>
-{% endfor %}
+</div>
+
 {% endblock %}

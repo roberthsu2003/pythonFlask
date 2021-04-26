@@ -10,5 +10,4 @@ def index():
 @main.route("/lot/<int:num>")
 def lotWebPage(num):
     lots = [getLot() for _ in range(num)]
-    lotlist, specialNum = getLot()
     return render_template("main/lot.html",num=num,lots=lots),200
