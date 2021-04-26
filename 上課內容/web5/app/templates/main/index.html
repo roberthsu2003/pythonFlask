@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Main</title>
-</head>
-<body>
-<h1>Hello! Main</h1>
-</body>
-</html>
+{% extends "/main/base.html" %}
+
+{% block title%}
+<h1>Main 首頁</h1>
+{% endblock %}
+
+{% block head%}
+{{ super() }}
+<style type="text/css">
+
+</style>
+{% endblock %}
+
+
+{% block body%}
+<h1>Main Body 區域</h1>
+{% endblock %}
