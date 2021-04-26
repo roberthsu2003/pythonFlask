@@ -13,9 +13,16 @@ Main lot
 
 
 {% block body%}
-{% for number in lot %}
-<div>{{number}}</div>
+{% for item in lots %}
+    <div>
+        第{{loop.index}}組
+    </div>
+    <div>
+        {% for num in item[0] %}
+        <div>{{num}}</div>
+        {% endfor %}
+        <h2>特別號</h2>
+        <div>{{item[1]}}</div>
+    </div>
 {% endfor %}
-<h2>特別號</h2>
-<div>{{specialNum}}</div>
 {% endblock %}
