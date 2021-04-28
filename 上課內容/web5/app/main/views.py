@@ -7,6 +7,10 @@ from flask import render_template
 def index():
     return render_template("main/index.html"),200
 
+@main.route("/lot",methods=["POST", "GET"])
+def lot():
+    return "Hello! World"
+
 @main.route("/lot/<int:num>")
 def lotWebPage(num):
     lots = [getLot() for _ in range(num)]
