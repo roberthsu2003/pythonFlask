@@ -10,10 +10,9 @@ def index():
 
 @main.route("/lot",methods=["POST","GET"])
 def lotWebPage():
-    try:
+    if request.method == "POST":
         num = int(request.values['count'])
-    except:
+    else:
         num = 12
-
     lots = [getLot() for _ in range(num)]
     return render_template("main/lot.html",num=num,lots=lots),200
