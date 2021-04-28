@@ -9,4 +9,7 @@ def createApp():
     from .login import login as login_blueprint
     app.register_blueprint(login_blueprint,url_prefix="/login")
 
+    from .form import form as form_blueprint
+    app.register_blueprint(form_blueprint,url_prefix="/form")
+
     return app
