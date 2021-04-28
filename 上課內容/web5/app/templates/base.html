@@ -26,6 +26,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/lot">電腦選號</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/form">會員表單</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -34,7 +37,16 @@
     {% block body %}
     {% endblock %}
 
+<!--address-->
+  <div class="container-md my-3 ">
+      <div class="row bg-light pt-5 pb-2">
 
+              <p class="col-md-4 text-muted text-center"><small>@copyright 巨匠選號股份有限公司</small></p>
+              <p class="col-md-4 text-muted text-center"><small>地址:台北市公園路30號3樓</small></p>
+              <p class="col-md-4 text-muted text-center"><small>電話:8943-7986</small></p>
+
+      </div>
+  </div>
     <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
   </body>
 </html>
