@@ -14,6 +14,16 @@ Main lot
 
 {% block body%}
 <div class="container-md">
+    <div class="row">
+        <select class="form-select" aria-label="Default select example">
+            <option selected>請輸入組數</option>
+            <option value="4">4</option>
+            <option value="8">8</option>
+            <option value="12">12</option>
+            <option value="16">16</option>
+            <option value="20">20</option>
+        </select>
+    </div>
     <div class="row justify-content-around ">
         {% for item in lots %}
         <div class="col-sm-6 col-md-3  g-3">
