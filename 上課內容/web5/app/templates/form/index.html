@@ -7,11 +7,25 @@
 {% block head%}
 {{ super() }}
 <style type="text/css">
-
+/*
+.form-label{
+    margin-bottom:1rem;
+}
+*/
 </style>
 {% endblock %}
 
 
 {% block body%}
-<h1>Form body 區域</h1>
+<form action="" method="get">
+    <div class="container-md">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <lable for="exampleFormControlInput1" class="form-label">Email Address</lable>
+                <input type="email" name="email" class="form-control" id="exampleFormControlInput1">
+            </div>
+
+        </div>
+    </div>
+</form>
 {% endblock %}
