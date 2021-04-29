@@ -6,6 +6,7 @@ body {
   color: #333;
 }
 
+/*使用module,_base.scss*/
 .inverse {
   background-color: #333;
   color: white;
@@ -24,6 +25,13 @@ nav a {
   display: block;
   padding: 6px 12px;
   text-decoration: none;
+}
+
+/*建立Mixins*/
+.box {
+  -webkit-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  transform: rotate(30deg);
 }
 
 /*# sourceMappingURL=sample1.css.map */
