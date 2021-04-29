@@ -34,4 +34,23 @@ nav a {
   transform: rotate(30deg);
 }
 
+/*extend*/
+.warning, .error, .success, .message {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+.success {
+  border-color: green;
+}
+
+.error {
+  border-color: red;
+}
+
+.warning {
+  border-color: yellow;
+}
+
 /*# sourceMappingURL=sample1.css.map */
