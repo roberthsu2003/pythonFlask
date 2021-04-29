@@ -1,0 +1,9 @@
+/*sass的變數*/
+$font-stack: Helvetica, sans-serif;
+$primary-color:#333;
+
+body {
+    background-color:#F5F5DC;
+    font:$font-stack;
+    color:$primary-color;
+    }

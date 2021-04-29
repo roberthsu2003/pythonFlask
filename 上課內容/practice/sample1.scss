@@ -1,13 +1,10 @@
-/*sass的變數*/
-$font-stack: Helvetica, sans-serif;
-$primary-color:#333;
+@use 'base';
 
-body {
-    background-color:#F5F5DC;
-    font:$font-stack;
-    color:$primary-color;
+.inverse{
+    background-color:base.$primary-color;
+    color:white;
+
 }
-
 /*sass支援巢狀選取器的語法*/
 nav{
     ul{

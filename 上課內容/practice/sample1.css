@@ -6,6 +6,11 @@ body {
   color: #333;
 }
 
+.inverse {
+  background-color: #333;
+  color: white;
+}
+
 /*sass支援巢狀選取器的語法*/
 nav ul {
   margin: 0;
