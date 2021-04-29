@@ -1,3 +1,4 @@
+/*sass的變數*/
 $font-stack: Helvetica, sans-serif;
 $primary-color:#333;
 
@@ -6,3 +7,21 @@ body {
     font:$font-stack;
     color:$primary-color;
 }
+
+/*sass支援巢狀選取器的語法*/
+nav{
+    ul{
+        margin:0;
+        padding:0;
+        list-style:none;
+    }
+
+    li{display:inline-block;}
+
+    a{
+        display:block;
+        padding: 6px 12px;
+        text-decoration:none;
+    }
+}
+

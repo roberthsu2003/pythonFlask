@@ -1,7 +1,24 @@
+@charset "UTF-8";
+/*sass的變數*/
 body {
   background-color: #F5F5DC;
   font: Helvetica, sans-serif;
   color: #333;
+}
+
+/*sass支援巢狀選取器的語法*/
+nav ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+nav li {
+  display: inline-block;
+}
+nav a {
+  display: block;
+  padding: 6px 12px;
+  text-decoration: none;
 }
 
 /*# sourceMappingURL=sample1.css.map */
