@@ -1,7 +1,7 @@
 {% extends "/base.html" %}
 
 {% block title%}
-<h1>表單驗證</h1>
+表單驗證
 {% endblock %}
 
 {% block head%}
@@ -13,12 +13,51 @@
 
 
 {% block body%}
-<form action="" method="post">
-    <div class="container-md">
-    <h1>表單驗證</h1>
+<div class="container-md">
+  <form class="row g-3 needs-validation" novalidate>
+    <div class="col-md-4">
+      <label for="validationCustom01" class="form-label">姓</label>
+      <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+      <div class="valid-feedback">
+        看起來不錯
+      </div>
     </div>
-</form>
+
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">送出</button>
+    </div>
+  </form>
+</div>
+
+
 
 
 
 {% endblock %}
+
+{% block javascript %}
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>
+{% endblock %}
+
+
