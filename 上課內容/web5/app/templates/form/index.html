@@ -61,7 +61,18 @@ element.style {
     {% if person %}
     <div class="container-md">
         <div class="row">
-            {{person.email}}, {{person.desc}}, {{person.overnight}}
+           {% if person.email %}
+            {{person.email}}
+           {% endif %}
+
+            {% if person.overnight %}
+            {{person.overnight}}
+           {% endif %}
+
+            {% if person.desc %}
+            {{person.desc}}
+           {% endif %}
+
         </div>
     </div>
     {% endif %}

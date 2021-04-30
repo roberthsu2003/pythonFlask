@@ -10,9 +10,9 @@ def form():
                 self.overnight = overnight
 
         if request.method == "POST":
-            email = request.values['email']
-            desc = request.values['desc']
-            overnight = request.values['overnight']
+            email = request.form.get('email')
+            desc = request.form.get('desc')
+            overnight = request.form.get('overnight')
 
             p1=Person(email=email, desc=desc, overnight=overnight)
             return render_template("/form/index.html",person=p1), 200
