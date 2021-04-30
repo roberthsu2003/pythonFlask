@@ -23,12 +23,16 @@ from flask_wtf import FlaskForm
 from wtforms import StringField,SubmitField
 from wtforms.validators import DataRequired
 class NameForm(FlaskForm):
-    name = StringField("姓名", validators=[DataRequired])
+    name = StringField("姓名", validators=[DataRequired()])
     submit = SubmitField("送出")
 
 
 @form.route("/validate",methods=["GET","POST"])
 def validate():
-    return render_template('/form/validate.html'),200
+    name = None
+    form = NameForm()
+    if form.validate_on_submit():
+        name = form.name.data
+    return render_template('/form/validate.html',form=form,name=name),200
 
 
