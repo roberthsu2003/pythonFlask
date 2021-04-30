@@ -19,6 +19,14 @@ def form1():
         else:
             return render_template("/form/index.html"), 200
 
+from flask_wtf import FlaskForm
+from wtforms import StringField,SubmitField
+from wtforms.validators import DataRequired
+class NameForm(FlaskForm):
+    name = StringField("姓名", validators=[DataRequired])
+    submit = SubmitField("送出")
+
+
 @form.route("/validate",methods=["GET","POST"])
 def validate():
     return render_template('/form/validate.html'),200
