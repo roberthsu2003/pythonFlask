@@ -2,7 +2,7 @@ from . import form
 from flask import render_template,request
 
 @form.route("/",methods=["GET","POST"])
-def form():
+def form1():
         class Person():
             def __init__(self, email=None, desc=None, overnight=None):
                 self.email = email
@@ -18,3 +18,9 @@ def form():
             return render_template("/form/index.html",person=p1), 200
         else:
             return render_template("/form/index.html"), 200
+
+@form.route("/validate",methods=["GET","POST"])
+def validate():
+    return render_template('/form/validate.html'),200
+
+
