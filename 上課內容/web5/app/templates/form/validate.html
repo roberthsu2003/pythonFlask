@@ -17,8 +17,10 @@
   <form class="row g-3" method="post" action="">
     <div class="col-md-4">
       {{form.hidden_tag()}}
-      {{form.name.label(class='form-label')}}{{form.name(class='form-control')}}
-
+      {{form.firstname.label(class='form-label')}}{{form.firstname(class='form-control')}}
+    </div>
+    <div class="col-md-4">
+      {{form.lastname.label(class='form-label')}}{{form.lastname(class='form-control')}}
     </div>
 
     <div class="col-12">
@@ -26,13 +28,19 @@
     </div>
   </form>
 
-  {% if name %}
+
   <div class="row">
     <div class="col-12">
-      <h1>{{name}}</h1>
+      {% if firstname %}
+      <h1>{{firstname}}</h1>
+      {% endif %}
+
+      {% if lastname %}
+      <h1>{{lastname}}</h1>
+      {% endif %}
     </div>
   </div>
-  {% endif %}
+
 </div>
 
 

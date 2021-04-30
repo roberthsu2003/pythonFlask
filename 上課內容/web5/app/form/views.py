@@ -20,19 +20,22 @@ def form1():
             return render_template("/form/index.html"), 200
 
 from flask_wtf import FlaskForm
-from wtforms import StringField,SubmitField
+from wtforms.fields import StringField,SubmitField
 from wtforms.validators import DataRequired
 class NameForm(FlaskForm):
-    name = StringField("姓名", validators=[DataRequired()])
+    firstname = StringField("姓", validators=[DataRequired()])
+    lastname = StringField("名", validators=[DataRequired()])
     submit = SubmitField("送出")
 
 
 @form.route("/validate",methods=["GET","POST"])
 def validate():
-    name = None
+    firstname = None
+    lastname = None
     form = NameForm()
     if form.validate_on_submit():
-        name = form.name.data
-    return render_template('/form/validate.html',form=form,name=name),200
+        firstname = form.firstname.data
+        lastname = form.lastname.data
+    return render_template('/form/validate.html',form=form,firstname=firstname,lastname=lastname),200
 
 
