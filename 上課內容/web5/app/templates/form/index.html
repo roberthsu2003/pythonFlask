@@ -26,7 +26,7 @@ element.style {
 
 
 {% block body%}
-<form action="" method="get">
+<form action="" method="post">
     <div class="container-md">
         <div class="row justify-content-center mb-3">
             <div class="col-md-8">
@@ -58,9 +58,12 @@ element.style {
     </div>
 </form>
 
-<div class="container-md">
-    <div class="row">
-        {{person.email}}, {{person.desc}}, {{person.overnight}}
+    {% if person %}
+    <div class="container-md">
+        <div class="row">
+            {{person.email}}, {{person.desc}}, {{person.overnight}}
+        </div>
     </div>
-</div>
+    {% endif %}
+
 {% endblock %}
