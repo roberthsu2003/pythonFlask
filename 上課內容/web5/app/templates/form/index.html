@@ -12,6 +12,15 @@
     margin-bottom:1rem;
 }
 */
+
+
+element.style {
+}
+.form-check-input[type=checkbox] {
+    border-radius: .25em;
+}
+
+
 </style>
 {% endblock %}
 
@@ -34,10 +43,24 @@
         </div>
 
         <div class="row justify-content-center mt-3">
+            <div class="col-md-8">
+                <input name="overnight" class="form-check-input" type="checkbox" value="yes" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">過夜</label>
+
+            </div>
+        </div>
+
+        <div class="row justify-content-center mt-3">
             <div class="col-md-8 d-flex justify-content-end">
                 <button type="submit" class="btn btn-secondary">送出</button>
             </div>
         </div>
     </div>
 </form>
+
+<div class="container-md">
+    <div class="row">
+        {{person.email}}, {{person.desc}}, {{person.overnight}}
+    </div>
+</div>
 {% endblock %}
