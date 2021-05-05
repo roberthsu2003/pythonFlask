@@ -3,9 +3,10 @@ from . import db
 class City(db.Model):
     __tablename__ = "city"
     id = db.Column(db.Integer, primary_key=True)
-    cityName = db.Column(db.String(15))
-    continent = db.Column(db.String(15))
-    country = db.Column(db.String(15))
+    cityName = db.Column(db.String(20))
+    continent = db.Column(db.String(20))
+    country = db.Column(db.String(20))
+    description = db.Column(db.Text)
     image = db.Column(db.String)
     lat = db.Column(db.Float)
     lon = db.Column(db.Float)
