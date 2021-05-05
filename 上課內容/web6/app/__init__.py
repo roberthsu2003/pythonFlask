@@ -10,8 +10,10 @@ def creatApp():
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
     #初始化flask_sqlalchemy
-    basedir = os.path.abspath(os.path.dirname(__name__))
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+os.path.join(basedir,'cities.sqlite')
+    basedir = os.path.abspath(os.path.dirname(__file__))
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+ os.path.join(basedir,'cities.sqlite')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
     db.init_app(app)
     return app
