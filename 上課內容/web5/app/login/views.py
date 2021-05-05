@@ -1,5 +1,7 @@
 from . import login
+from ..model import db,User,Role
 
 @login.route("/")
 def login():
-    return "<h1>Login</h1>"
+    user=User.query.filter_by(username='john').first()
+    return f"<h1>{user.username}</h1>"
