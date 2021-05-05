@@ -4,3 +4,7 @@ from flask import render_template
 @main.route("/")
 def index():
     return render_template('index.html'),200
+
+@main.route("/second")
+def second():
+    return render_template('second.html'),200
