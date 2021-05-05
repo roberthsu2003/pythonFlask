@@ -5,7 +5,7 @@ from . import db
 class City(db.Model):
     __tablename__ = "city"
     id = db.Column(db.Integer, primary_key=True)
-    cityName = db.Column(db.String(20))
+    cityName = db.Column(db.String(30))
     continent = db.Column(db.String(20))
     country = db.Column(db.String(20))
     description = db.Column(db.Text)
@@ -21,14 +21,15 @@ def createDB():
     basedir = os.path.abspath(os.path.dirname(__file__))
     sqlitePath = os.path.join(basedir,'cities.sqlite')
     if not os.path.exists(sqlitePath):
+        db.create_all()
         print("下載資料")
         response = requests.get('https://flask-robert.herokuapp.com/city')
         allData=response.json()
         allCity = allData['allCity']
         for city in allCity:
-            print(city)
-            print("==========")
-        #db.create_all()
+            cityObject = City(cityName=city['cityName'],continent=city['continent'],country=city['country'],description=city['description'],image=city['image'],lat=city['lat'],lon=city['lon'],url=city['url'])
+            db.session.add(cityObject)
+        db.session.commit()
     else:
-        print('已經建立')
+        print('sqlite已經建立')
 
