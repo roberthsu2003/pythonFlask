@@ -6,8 +6,8 @@ from ..model import db,createDB,City
 @main.route("/")
 def index():
     createDB()
-    print(City.query.filter_by(country='Japan').all())
-    return render_template('index.html'),200
+    citys = City.query.limit(6).all()
+    return render_template('index.html',citys=citys),200
 
 
 @main.route("/second")

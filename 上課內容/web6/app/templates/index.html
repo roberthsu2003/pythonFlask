@@ -25,6 +25,11 @@
 {% endblock %}
 
 {% block body %}
+<ul>
+{% for city in citys %}
+  <li>{{city.cityName}}</li>
+{% endfor %}
+</ul>
 <header>
   <div class="collapse bg-dark" id="navbarHeader">
     <div class="container">
