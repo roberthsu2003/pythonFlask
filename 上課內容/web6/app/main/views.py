@@ -6,7 +6,7 @@ from ..model import db,createDB,City
 @main.route("/")
 def index():
     createDB()
-    citys = City.query.limit(6).all()
+    citys = City.query.limit(9).all()
     return render_template('index.html',citys=citys),200
 
 
