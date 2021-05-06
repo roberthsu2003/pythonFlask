@@ -1,11 +1,12 @@
 from . import main
 from flask import render_template
-from ..model import db,createDB
+from ..model import db,createDB,City
 
 
 @main.route("/")
 def index():
     createDB()
+    print(City.query.filter_by(country='Japan').all())
     return render_template('index.html'),200
 
 

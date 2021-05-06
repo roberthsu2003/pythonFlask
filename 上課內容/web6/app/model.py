@@ -22,7 +22,6 @@ def createDB():
     sqlitePath = os.path.join(basedir,'cities.sqlite')
     if not os.path.exists(sqlitePath):
         db.create_all()
-        print("下載資料")
         response = requests.get('https://flask-robert.herokuapp.com/city')
         allData=response.json()
         allCity = allData['allCity']
@@ -30,6 +29,5 @@ def createDB():
             cityObject = City(cityName=city['cityName'],continent=city['continent'],country=city['country'],description=city['description'],image=city['image'],lat=city['lat'],lon=city['lon'],url=city['url'])
             db.session.add(cityObject)
         db.session.commit()
-    else:
-        print('sqlite已經建立')
+
 
