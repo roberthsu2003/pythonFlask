@@ -65,19 +65,22 @@
             <img src="{{url_for('static',filename='images/cityImage/'+imageNameList[-1])}}" class="img-fluid" alt="...">
         </div>
         <div class="col-md-6 col-lg-4 border">
-            <p>{{ city.cityName }}</p>
-            <p>{{ city.cityName }}</p>
-            <p>{{ city.cityName }}</p>
-            <p>{{ city.cityName }}</p>
-            <p>{{ city.cityName }}</p>
-            <p>{{ city.cityName }}</p>
-            <p>{{ city.cityName }}</p>
-            <p>{{ city.cityName }}</p>
-            <p>{{ city.cityName }}</p>
-            <p>{{ city.cityName }}</p>
-            <p>{{ city.cityName }}</p>
-            <p>{{ city.cityName }}</p>
-            <p>{{ city.cityName }}</p>
+            <dl class="row">
+                <dt class="col-sm-3">城市</dt>
+                <dd class="col-sm-9"><p>{{city.cityName}}</p></dd>
+
+                <dt class="col-sm-3">區域</dt>
+                <dd class="col-sm-9"><p>{{city.continent}}</p></dd>
+
+                <dt class="col-sm-3">國家</dt>
+                <dd class="col-sm-9"><p>{{city.country}}</p></dd>
+
+                <dt class="col-sm-3">介紹</dt>
+                <dd class="col-sm-9"><p>{{city.description}}</p></dd>
+
+                <dt class="col-sm-3">維基簡介</dt>
+                <dd class="col-sm-9"><p><a href="{{city.url}}" target="_blank">{{city.cityName}}</a></p></dd>
+            </dl>
 
         </div>
         <div class="col-md-6 col-lg-4 border">
