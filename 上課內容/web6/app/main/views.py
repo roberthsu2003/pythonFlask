@@ -32,4 +32,6 @@ def page(pageNum):
 
 @main.route('/cities/<int:cityNum>')
 def cities(cityNum):
-    return render_template('cities/city.html'),200
+    city = City.query.get(cityNum)
+    print(city)
+    return render_template('cities/city.html',city=city),200
