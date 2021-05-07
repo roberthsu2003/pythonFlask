@@ -29,3 +29,7 @@ def page(pageNum):
         prev_num = cityPageQuery.prev_num
 
     return render_template('index.html',citys=cityPageQuery.items,has_next=has_next,has_prev=has_prev,next_num = next_num, prev_num=prev_num,page=page,pages=pages),200
+
+@main.route('/cities/<int:cityNum>')
+def cities(cityNum):
+    return render_template('cities/city.html'),200
