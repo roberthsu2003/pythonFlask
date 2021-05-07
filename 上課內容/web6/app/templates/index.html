@@ -86,8 +86,7 @@
               <p class="card-text">{{ city.description[:100]+'...' }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  <a class="btn btn-outline-primary btn-sm" href="/cities/{{city.id}}" role="button">View</a>
                 </div>
                 <small class="text-muted">9 mins</small>
               </div>
