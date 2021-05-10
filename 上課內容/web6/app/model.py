@@ -30,4 +30,21 @@ def createDB():
             db.session.add(cityObject)
         db.session.commit()
 
+class User(db.Model):
+    __tablename__ = 'users'
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    passwordHash = db.Column(db.String(128))
 
+    def __repr__(self):
+        return f"<User username={self.username}>"
+
+    @property
+    def password(self):
+        raise AttributeError
+
+
+    @password.setter
+    def password(self,pwd):
+        self.passwordHash = pwd;
