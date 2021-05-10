@@ -2,8 +2,9 @@ from . import auth
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField,SubmitField,PasswordField
 from wtforms.validators import DataRequired,Email
-from flask import render_template,redirect,url_for,session
+from flask import render_template,redirect,url_for,session,flash
 from ..model import User
+
 
 
 class LoginForm(FlaskForm):
@@ -26,8 +27,8 @@ def login():
         else:
             session["username"] = None
             session["know"] = False
-            errorMessage = "密碼錯誤"
+            flash("密碼錯誤")
             print(errorMessage)
 
 
-    return render_template('/auth/login.html',form = loginForm,error=errorMessage),200
+    return render_template('/auth/login.html',form = loginForm),200
