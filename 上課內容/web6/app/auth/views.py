@@ -2,6 +2,7 @@ from . import auth
 from flask_wtf import FlaskForm
 from wtforms.fields import StringField,SubmitField,PasswordField
 from wtforms.validators import DataRequired,Email
+from flask import render_template
 
 class LoginForm(FlaskForm):
     email = StringField("Email:",validators=[DataRequired(),Email()])
@@ -11,4 +12,4 @@ class LoginForm(FlaskForm):
 @auth.route('/login',methods=['GET','POST'])
 def login():
     loginForm = LoginForm()
-    return "<h1>Hello!Login</h1>"
+    return render_template('/auth/login.html',form = loginForm),200
