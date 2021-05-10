@@ -1,6 +1,7 @@
 import os
 import requests
 from . import db
+from werkzeug.security import generate_password_hash,check_password_hash
 
 class City(db.Model):
     __tablename__ = "city"
@@ -47,4 +48,7 @@ class User(db.Model):
 
     @password.setter
     def password(self,pwd):
-        self.passwordHash = pwd;
+        self.passwordHash = generate_password_hash(pwd);
+
+    def verify_password(self, password):
+        return check_password_hash(self.passwordHash,password)
