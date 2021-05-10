@@ -63,6 +63,14 @@ flask
 >>> heroku login
 ```
 
+#### 安裝git
+
+```
+$ git config --global user.name "yourname"
+$ git config --global user.email youremail
+$ git config --global init.defaultBranch main
+```
+
 #### 在專案資料夾下初始化 git
 
 ```
@@ -108,7 +116,7 @@ $ git add .
 # 將所有變動 commit 並加上訊息
 $ git commit -a -m "第一次commit"
 # 推送到遠端
-$ git push heroku master
+$ git push heroku main
 ```
 
 #### 查看log
@@ -125,5 +133,5 @@ $ git add .
 # 將所有變動 commit 並加上訊息
 $ git commit -a -m "更新內容"
 # 推送到遠端
-$ git push heroku master
+$ git push heroku main
 ```
