@@ -18,5 +18,7 @@ def creatApp():
     app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'+ os.path.join(basedir,'cities.sqlite')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+    #防止CSRF的攻擊
+    app.config["SECRET_KEY"] = "lkjkdfjikjhKlkdsjfdksKSLIhjlsdkjairywtyslvkd"
     db.init_app(app)
     return app
