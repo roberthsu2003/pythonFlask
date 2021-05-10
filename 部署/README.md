@@ -44,7 +44,7 @@ web: gunicorn main:app
 #### 建立runtime.txt python使用的版本
 
 ```
-python-3.8.8
+python-3.8.10
 ```
 
 #### 建立requirements.txt
