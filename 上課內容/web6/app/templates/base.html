@@ -17,15 +17,22 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">About</h4>
-          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+          {% if username %}
+          <h4 class="text-white">關於{{username}}</h4>
+          <p class="text-muted">愛迪生持有專利的發明物包括：對世界極大影響的電燈泡、留聲機、活動電影攝影機、直流電力系統、蠟製印刷滾筒等最為人知。在美國，愛迪生名下擁有1093項專利，而他在美國、英國、法國、德國等國的專利數累計超過150項</p>
+          {% else %}
+           <h4 class="text-white">尚未登入</h4>
+          <p class="text-muted">登入才有資料</p>
+          {% endif %}
         </div>
         <div class="col-sm-4 offset-md-1 py-4">
-          <h4 class="text-white">Contact</h4>
+          <h4 class="text-white">聯絡我</h4>
           <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Follow on Twitter</a></li>
-            <li><a href="#" class="text-white">Like on Facebook</a></li>
-            <li><a href="#" class="text-white">Email me</a></li>
+            {% if know %}
+            <li><a href="#" class="text-white">Line_Me</a></li>
+            {% else %}
+             <li><a href="/auth/login" class="text-white">Login</a></li>
+            {% endif %}
           </ul>
         </div>
       </div>

@@ -1,5 +1,5 @@
 from . import main
-from flask import render_template,redirect
+from flask import render_template,redirect,session
 from ..model import db,createDB,City
 
 
@@ -28,7 +28,12 @@ def page(pageNum):
     if has_prev:
         prev_num = cityPageQuery.prev_num
 
-    return render_template('index.html',citys=cityPageQuery.items,has_next=has_next,has_prev=has_prev,next_num = next_num, prev_num=prev_num,page=page,pages=pages),200
+
+    #session
+    username = session.get('username')
+    know = session.get('know')
+
+    return render_template('index.html',citys=cityPageQuery.items,has_next=has_next,has_prev=has_prev,next_num = next_num, prev_num=prev_num,page=page,pages=pages,know=know,username=username),200
 
 @main.route('/cities/<int:cityNum>')
 def cities(cityNum):
