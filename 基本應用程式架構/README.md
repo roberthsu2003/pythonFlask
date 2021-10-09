@@ -48,9 +48,16 @@ def index():
 
 > 上面就是透過app.route('/')decorator 註冊index()為網站根目錄將被執行的function。
 
-## 規畫動態路徑
+## 動態路徑
 
-利用在route的參數中，使用<>將部份URL網址的名稱成為變數，並且可以傳遞給view function。
+利用在route('/user/<name>')的引數中，user稱為static component,<name>被程為動態的dynamic component,name的內容將會傳遞給view function。
+
+dynamic component預設被當作字串型別，也可以指定為int,float的型別，語法如下:
+
+```
+ <int:name>
+ <float:name>
+```
 
 ```python
 @app.route('/user/<name>')
@@ -58,7 +65,7 @@ def user(name):
 	return '<h1>Hello, {}!</h1>'.format(name)
 ```
 
-## 啟動應用程式
+## 開發中使用的Web Server
 
 ```
 #macOS,Linux
@@ -185,6 +192,8 @@ Options:
   --help                          Show this message and exit.
 
 ```
+
+## 有電腦ip的網址
 
 ```
 (venv) $ export FLASK_APP='./code/lesson1.py'
