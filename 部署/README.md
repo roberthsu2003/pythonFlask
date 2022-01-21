@@ -38,6 +38,7 @@ def hello():
 
 ```
 # main是主程式的檔名，app是main.py內的實體app
+# 注意 web: gunicorn的空格一定要有，不然上傳會出錯
 web: gunicorn main:app
 ```
 
