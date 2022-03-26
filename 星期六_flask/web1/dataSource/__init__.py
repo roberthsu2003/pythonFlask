@@ -1,4 +1,6 @@
 import requests
+import sqlite3
+from sqlite3 import Error
 
 def get_weather_of_taiwan():
     urlPathApi = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization=rdec-key-123-45678-011121314&format=JSON"
@@ -30,8 +32,24 @@ def get_weather_of_taiwan():
         weatherList.append(itemDic)
     return weatherList
 
+def create_connection(db_file):
+    conn = None
+    try:
+        conn = sqlite3.connect(db_file);
+        print(sqlite3.version)
+    except Error as e:
+        print(e)
+        return None
+
+    return conn
+
+
+
 
 def get_cities():
+    conn = create_connection('citys.db')
+    if conn is not None:
+        print("資料庫連線成功")
     return ["Taiwan", "Spain"]
 
 
