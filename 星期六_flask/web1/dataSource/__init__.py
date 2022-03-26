@@ -59,7 +59,8 @@ def get_countries():
     conn = create_connection('citys.db')
     if conn is not None:
         print("資料庫連線成功")
-        country_list = select_countries_tasks(conn)
+        country_data = select_countries_tasks(conn)
+        country_list = [item[0] for item in country_data]
         conn.close()
     return country_list
 
