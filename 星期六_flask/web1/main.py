@@ -2,17 +2,17 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route("/")
-def hello_world():
-    return """
-    <h1>Hello, World!</H1>
-    <ul>
-    <li>number1</li>
-    <li>number2</li>
-    <li>number3</li>
-    <li>number4</li>
-    </ul>
-    """
+@app.route('/')
+def index():
+    return 'Index Page'
+
+@app.route('/hello')
+def hello():
+    return 'Hello, World'
+
+@app.route('/world')
+def world():
+    return "<h1>World</h>"
 
 if __name__ == "__main__":
     app.run(debug=True)
