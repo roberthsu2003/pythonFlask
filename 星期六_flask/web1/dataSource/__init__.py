@@ -1,8 +1,7 @@
 import requests
 
-urlPathApi = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization=rdec-key-123-45678-011121314&format=JSON"
-
 def get_weather_of_taiwan():
+    urlPathApi = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/O-A0001-001?Authorization=rdec-key-123-45678-011121314&format=JSON"
     try:
         response = requests.get(urlPathApi)
         response.raise_for_status()
@@ -30,4 +29,9 @@ def get_weather_of_taiwan():
         itemDic['溫度'] = float(item['weatherElement'][3]['elementValue'])
         weatherList.append(itemDic)
     return weatherList
+
+
+def get_cities():
+    return ["Taiwan", "Spain"]
+
 
