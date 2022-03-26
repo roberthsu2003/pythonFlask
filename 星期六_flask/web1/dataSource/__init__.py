@@ -43,13 +43,24 @@ def create_connection(db_file):
 
     return conn
 
+def select_countries_tasks(conn):
+    cursor = conn.cursor()
+    sqlString = """
+    SELECT  DISTINCT country
+    FROM city
+    ORDER BY country
+    """
+    cursor.execute(sqlString)
+    countries = cursor.fetchall()
+    return countries
 
 
-
-def get_cities():
+def get_countries():
     conn = create_connection('citys.db')
     if conn is not None:
         print("資料庫連線成功")
-    return ["Taiwan", "Spain"]
+        country_list = select_countries_tasks(conn)
+        conn.close()
+    return country_list
 
 
