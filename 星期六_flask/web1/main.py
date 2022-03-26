@@ -1,5 +1,6 @@
 from flask import Flask
 from markupsafe import escape
+import dataSource
 
 app = Flask(__name__)
 
@@ -19,6 +20,10 @@ def world():
 def show_user_profile(username):
     # show the user profile for that user
     return f'使用者是:{escape(username)}'
+
+@app.route("/weather")
+def show_weather():
+    return dataSource.weather()
 
 if __name__ == "__main__":
     app.run(debug=True)
