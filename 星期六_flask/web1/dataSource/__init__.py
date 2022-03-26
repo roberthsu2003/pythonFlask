@@ -29,5 +29,5 @@ def get_weather_of_taiwan():
         itemDic['時間'] = item['time']['obsTime']
         itemDic['溫度'] = float(item['weatherElement'][3]['elementValue'])
         weatherList.append(itemDic)
-    return str(weatherList)
+    return weatherList
 
