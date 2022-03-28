@@ -22,3 +22,9 @@
 | DELETE | URL | 刪除一筆資料 | 200 或者 204 |
 
 > RESTful架構並不需要提供所有功能
+
+### 查看本資料夾內app1資料夾
+
+- app1是flask接收json的方式
+- 呼叫api和傳送帳號密碼和data和json.ipynb 是發送request給api
+
