@@ -8,7 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet"  >
 
-    <title>Bootstrap5</title>
+    <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
   <div class="container">
