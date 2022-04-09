@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <title>Flask Home page</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/fora1.css') }}" />
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery-3.6.0.min.js') }}"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("p").click(function(){
+        $(this).hide();
+        });
+    });
+    </script>
 </head>
 <body>
     <h1>{{name}}</h1>
     <h2>{{age}}</h2>
+    <p>please press me</p>
 
 </body>
 </html>
