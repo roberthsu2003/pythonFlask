@@ -20,6 +20,7 @@ def index1():
 @app.route("/api/receive/",methods=['GET', 'POST'])
 def receive():
     if request.method == "POST":
+        print(request.get_json().get('lotdata'))
         return "<h1>收到(POST)</h1>"
     elif request.method == "GET":
         return "<h1>收到(GET)</h1>"
