@@ -9,6 +9,8 @@ def index():
     if conn is not None:
         with conn:
             print("connection successful")
+            lotList = dataSource.getlot(conn)
+            print(lotList)
     return render_template("a2.html")
 
 @app.route("/a3/")
