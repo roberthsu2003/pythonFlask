@@ -20,7 +20,12 @@ def index1():
 @app.route("/api/receive/",methods=['GET', 'POST'])
 def receive():
     if request.method == "POST":
-        print(request.get_json().get('lotdata'))
+        lotData = request.get_json().get('lotdata')
+        if len(lotData) == 9:
+            conn = dataSource.create_connection('lot.db')
+            if conn is not None:
+                with conn:
+                    dataSource.insertData(conn,lotData)
         return "<h1>收到(POST)</h1>"
     elif request.method == "GET":
         return "<h1>收到(GET)</h1>"
