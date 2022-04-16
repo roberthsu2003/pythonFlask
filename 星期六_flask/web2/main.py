@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,request
 import dataSource
 
 
@@ -17,9 +17,13 @@ def index():
 def index1():
     return render_template("a3.html")
 
-@app.route("/api/receive/")
+@app.route("/api/receive/",methods=['GET', 'POST'])
 def receive():
-    return "<h1>收到</h1>"
+    if request.method == "POST":
+        return "<h1>收到(POST)</h1>"
+    elif request.method == "GET":
+        return "<h1>收到(GET)</h1>"
+
 
 if __name__ == "__main__":
     app.run(debug=True)
