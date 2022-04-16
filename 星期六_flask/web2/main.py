@@ -10,12 +10,16 @@ def index():
         with conn:
             print("connection successful")
             lotList = dataSource.getlot(conn)
-
+            print(lotList)
     return render_template("a2.html",lotList=lotList)
 
 @app.route("/a3/")
 def index1():
     return render_template("a3.html")
+
+@app.route("/api/receive/")
+def receive():
+    return "<h1>收到</h1>"
 
 if __name__ == "__main__":
     app.run(debug=True)
