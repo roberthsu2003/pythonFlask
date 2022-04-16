@@ -10,8 +10,8 @@ def index():
         with conn:
             print("connection successful")
             lotList = dataSource.getlot(conn)
-            print(lotList)
-    return render_template("a2.html")
+
+    return render_template("a2.html",lotList=lotList)
 
 @app.route("/a3/")
 def index1():
