@@ -11,11 +11,13 @@
 5. Heroku計算方式是使用dyno, 免費方式是使用free dyno, dyno 1秒可以處理10~50 request
 6. 資料庫免費限制1萬筆，最多20個同時連線
 
-## Heroku簡單部署方式
+## Heroku簡單部署方式([官方文件](https://devcenter.heroku.com/articles/heroku-cli))
 
 ### 1. 註冊Heroku帳號
 
 ### 2. 根據不同作業系統安裝 Heroku CLI
+- [先安裝 git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+- [git 設定name和email](https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup)
 
 ### 3. 專案部份:
 
@@ -51,13 +53,33 @@ python-3.8.10
 #### 建立requirements.txt
 
 - Python 套件清單，告訴 Heroku 需要安裝哪些套件（主要有 gunicorn、flask 我們也可以設定需要安裝的版本）
+- pip freeze > requirements.txt
 
 ```
-gunicorn
+gunicorn==20.1.0
 flask
+```
+### 部署至heroku部份:
+- 以下是使用heroku網站後台建立專案的部署方式
+
+#### 登入
+
+```
+huroku login
+```
+
+
+#### git 設定和上傳
+
+```
+$ heroku git:remote -a 專案名稱
+$ git add .
+$ git commit -am "make it better"
+$ git push heroku master
 ```
 
 ### 部署至heroku部份:
+- 以下是直接使用 heroku CLI 建立專安
 #### 登入
 
 ```
