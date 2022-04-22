@@ -54,6 +54,7 @@ python-3.8.10
 
 - Python 套件清單，告訴 Heroku 需要安裝哪些套件（主要有 gunicorn、flask 我們也可以設定需要安裝的版本）
 - pip freeze > requirements.txt
+- 內容要加上gunicorn==最新版本
 
 ```
 gunicorn==20.1.0
