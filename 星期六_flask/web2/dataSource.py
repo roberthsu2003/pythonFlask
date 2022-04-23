@@ -51,7 +51,8 @@ VALUES (?,?,?,?,?,?,?,?,?);'''
 def getlot(conn):
     lotSQL = '''
     SELECT *
-    FROM lot;
+    FROM lot
+    ORDER BY datetime DESC
     '''
     cursor = conn.cursor()
     cursor.execute(lotSQL)
