@@ -1,4 +1,4 @@
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,jsonify
 import dataSource
 
 
@@ -32,7 +32,10 @@ def receive():
 
 @app.route("/api/v8/")
 def v8():
-    return "<h1>V8 Get</h2>"
+    conn = dataSource.create_connection('lot.db')
+    lotData = dataSource.getlot(conn)
+    print(lotData)
+    return jsonify(lotData)
 
 if __name__ == "__main__":
     app.run(debug=True)
