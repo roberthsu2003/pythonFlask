@@ -53,6 +53,7 @@ def getlot(conn):
     SELECT *
     FROM lot
     ORDER BY datetime DESC
+    LIMIT 5
     '''
     cursor = conn.cursor()
     cursor.execute(lotSQL)
