@@ -30,6 +30,9 @@ def receive():
     elif request.method == "GET":
         return "<h1>收到(GET)</h1>"
 
+@app.route("/api/v8/")
+def v8():
+    return "<h1>V8 Get</h2>"
 
 if __name__ == "__main__":
     app.run(debug=True)
