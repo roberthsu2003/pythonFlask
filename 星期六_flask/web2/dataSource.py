@@ -1,7 +1,8 @@
 import sqlite3
 from sqlite3 import Error
+import pymysql.cursors
 
-
+'''
 def create_connection(db_name):
     conn = None
     try:
@@ -13,12 +14,21 @@ def create_connection(db_name):
 
     create_table(conn)
     return conn
+'''
 
+def create_connection():
+    connection = pymysql.connect(host='us-cdbr-east-05.cleardb.net',
+                                 user='be8240e46ea8d8',
+                                 password='dc622e42',
+                                 database='heroku_fe9f33d1b22e89f',
+                                 charset='utf8mb4',
+                                 cursorclass=pymysql.cursors.DictCursor)
+    return connection
 
 def create_table(conn):
     sql = '''
     CREATE TABLE IF NOT EXISTS lot(
-        id INTEGER PRIMARY KEY,
+        id INTEGER PRIMARY KEY AUTO_INCREMENT,
         name TEXT NOT NULL,
         num1 INTEGER NOT NULL,
         num2 INTEGER NOT NULL,

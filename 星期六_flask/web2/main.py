@@ -5,7 +5,7 @@ import dataSource
 app = Flask(__name__)
 @app.route("/")
 def index():
-    conn = dataSource.create_connection('lot.db')
+    conn = dataSource.create_connection()
     if conn is not None:
         with conn:
             print("connection successful")
