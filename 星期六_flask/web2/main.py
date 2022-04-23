@@ -22,7 +22,7 @@ def receive():
     if request.method == "POST":
         lotData = request.get_json().get('lotdata')
         if len(lotData) == 9:
-            conn = dataSource.create_connection('lot.db')
+            conn = dataSource.create_connection()
             if conn is not None:
                 with conn:
                     dataSource.insertData(conn,lotData)
@@ -32,7 +32,7 @@ def receive():
 
 @app.route("/api/v8/")
 def v8():
-    conn = dataSource.create_connection('lot.db')
+    conn = dataSource.create_connection()
     lotData = dataSource.getlot(conn)
     print(lotData)
     return jsonify(lotData)

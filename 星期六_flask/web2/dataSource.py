@@ -23,6 +23,7 @@ def create_connection():
                                  database='heroku_fe9f33d1b22e89f',
                                  charset='utf8mb4',
                                  cursorclass=pymysql.cursors.DictCursor)
+    create_table(connection)
     return connection
 
 def create_table(conn):
@@ -53,7 +54,7 @@ def create_table(conn):
 
 def insertData(conn, data_list):
     insertSQL = '''INSERT INTO lot (name,num1,num2,num3,num4,num5,num6,spec,datetime) 
-VALUES (?,?,?,?,?,?,?,?,?);'''
+VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s);'''
     cursor = conn.cursor()
     cursor.execute(insertSQL, data_list)
     conn.commit()
