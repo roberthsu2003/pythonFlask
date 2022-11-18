@@ -29,4 +29,23 @@ $ python
 >>>
 ```
 
+### 建構一個最簡單的應用程式
 
+```python
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    return "Hello! World!"
+```
+
+#### 執行app
+- 檔案名稱不可以是flask.py,會衝突
+  
+```python
+
+$flask --app  被執行檔案名  run
+
+```
