@@ -43,9 +43,25 @@ def index():
 
 #### 執行app
 - 檔案名稱不可以是flask.py,會衝突
+- 被執行檔案名:wsgi應用程式名(module:app)
+- 如果應匆程式名稱是app,可以省略
   
 ```python
+$ flask --help  #查詢
+$ flask --app  module:app  run
 
-$flask --app  被執行檔案名  run
+```
 
+#### 在區網公開此網址
+
+```python
+$ flask run --help #查詢
+$ flask --app module:app run --host=0.0.0.0
+```
+
+#### Debug Mode
+
+```python
+$flask --help #查詢
+$flask --app module:app --debug --host=0.0.0.0
 ```
