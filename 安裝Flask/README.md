@@ -31,6 +31,11 @@ $ python
 
 ### 建構一個最簡單的應用程式
 
+- 建立app實體，成為WSGI應用程式
+- __name__,為module或package的名稱，主要目的是讓應用程式何處為根目錄，以便找尋static目錄和template目錄
+- route()是個decorator,告知URL路徑對應的function
+- index()目前為首頁路徑對應的function,必需要傳出html文字。
+
 ```python
 from flask import Flask
 
@@ -48,11 +53,10 @@ def index():
   
 ```python
 $ flask --help  #查詢
-$ flask --app  module:app  run
-
+$ flask --app  (module名稱):(app應用程式名稱)  run
 ```
 
-#### 在區網公開此網址
+#### 在區網公開此網址(Externally Visible Server)
 
 ```python
 $ flask run --help #查詢
@@ -125,7 +129,7 @@ def show_subpath(subpath):
 | path | string,可以包含(/) |
 | uuid | UUID字串 |
 
-#### 網址尾部加上斜線的重新導向行為:URL+(/)
+#### 網址尾部加上斜線:URL
 
 ```python
 @app.route('/projects/') #重新導向至projects目錄,避免使用
