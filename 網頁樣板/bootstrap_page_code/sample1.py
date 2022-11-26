@@ -10,4 +10,9 @@ def index():
 @app.route('/image')
 def image():
     #image
-    return render_template('sample/image.html')
+    return render_template('sample1/image.html')
+
+@app.route('/table')
+def table():
+    #table
+    return render_template('sample1/table.html')

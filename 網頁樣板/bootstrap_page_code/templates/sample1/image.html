@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>影像</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='sample1/css/bootstrap.min.css')}}">
+</head>
+<body>
+<!--
+    佔滿
+    class="image-fluid"
+-->
+<div class="w-25">
+    <img src="https://picsum.photos/id/1020/500/500" class="img-thumbnail">
+</div>
+
+<!--
+    左右
+    class="float-start"
+    class="float-end"
+-->
+
+<div>
+    <img src="https://picsum.photos/id/1020/200/200" class="rounded float-start">
+    <img src="https://picsum.photos/id/1020/200/200" class="rounded float-end">
+</div>
+
+<!--
+    置中
+    class="float-start"
+    class="float-end"
+-->
+<div>
+    <img src="https://picsum.photos/id/1020/200/200" class="rounded d-block mx-auto">
+</div>
+
+<!--
+    置中
+    class="text-center"
+    
+-->
+<div class="text-center">
+    <img src="https://picsum.photos/id/1020/200/200" class="rounded">
+</div>
+
+</body>
+</html>
