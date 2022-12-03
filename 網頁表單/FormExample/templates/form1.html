@@ -8,11 +8,22 @@
     <title>Form1</title>
 </head>
 <body>
-    <div>
-        
+    {% if not name  %}
+    <div class="container">
+        <form method="post">
+            {{form.hidden_tag()}}
+            {{form.name.label(class="form-label") }} 
+            {{form.name(class="form-control") }}
+            {{form.submit(class="btn btn-primary mt-3")}}
+        </form>
     </div>
-    <h1>Form1</h1>
+    {% else %}
+    <div class="container">
+        <h1>{{ name }}</h1>
+    </div>
+    {% endif %}
+    
 
-<script src="url_for('static',filename='js/bootstrap.bundle.min.js')"></script>
+<script src="{{url_for('static',filename='js/bootstrap.bundle.min.js')}}"></script>
 </body>
 </html>
