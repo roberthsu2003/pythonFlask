@@ -21,6 +21,5 @@ def main():
     window.protocol("WM_DELETE_WINDOW", on_closing)
     window.mainloop()
 
-if __name__ == "__main__":
-    window = None
+if __name__ == "__main__":    
     main()
