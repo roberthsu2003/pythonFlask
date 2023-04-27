@@ -1,4 +1,5 @@
 from flask import Flask,request,make_response
+from flask import render_template
 
 app = Flask(__name__)
 
@@ -20,3 +21,7 @@ def error():
     response = make_response("<h1>error</h1>",405)
     response.set_cookie("userID","robet hsu")
     return response
+
+@app.route("/leeWei")
+def leeWei():
+    return render_template("index.html")
