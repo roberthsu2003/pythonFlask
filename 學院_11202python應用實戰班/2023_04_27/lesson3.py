@@ -1,4 +1,4 @@
-from flask import Flask,request
+from flask import Flask,request,make_response
 
 app = Flask(__name__)
 
@@ -17,4 +17,6 @@ def user(name):
 
 @app.route("/error")
 def error():
-    return "<h1>error</h1>",404
+    response = make_response("<h1>error</h1>",405)
+    response.set_cookie("userID","robet hsu")
+    return response
