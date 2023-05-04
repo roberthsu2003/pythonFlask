@@ -49,18 +49,13 @@
         </nav>
 
         <div class="row">
-            <div class="col-12 col-md-6 col-xl-4 border bg-success bg-opacity-50">
-                {# 這是key1 #}
-                {{content_data["key1"]}}
-            </div>
-            <div class="col-12 col-md-6 col-xl-4 border bg-primary bg-opacity-50">
-                {# 這是key2 #}
-                {{content_data["key2"]}}
-            </div>
-            <div class="col-12 col-md-6 col-xl-4 border bg-info bg-opacity-50">
-                {# 這是key3 #}
-                {{content_data["key3"]}}
-            </div>
+            {% for key,values in  content_data.items() %}
+                <div class="col-12 col-md-6 col-xl-4 border bg-success bg-opacity-50">
+                    <h3>{{key}}</h3>
+                    <p>{{values}}</p>
+                </div>
+            {% endfor %}
+            
         </div>
     </div>
 
