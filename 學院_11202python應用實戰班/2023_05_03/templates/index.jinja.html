@@ -11,39 +11,39 @@
         /* X-Small devices (portrait phones, less than 576px)*/
         /* No media query for `xs` since this is the default in Bootstrap*/
         /*Small devices (landscape phones, 576px and up)*/
-        
-        @media (min-width: 576px) {
-            
-        }
+
+        @media (min-width: 576px) {}
 
         /*Medium devices (tablets, 768px and up)*/
-        @media (min-width: 768px) {
-            
-        }
+        @media (min-width: 768px) {}
 
         /*Large devices (desktops, 992px and up)*/
-        @media (min-width: 992px) {
-            
-        }
+        @media (min-width: 992px) {}
 
         /* X-Large devices (large desktops, 1200px and up) */
-        @media (min-width: 1200px) {
-            
-        }
+        @media (min-width: 1200px) {}
 
         /*XX-Large devices (larger desktops, 1400px and up) */
-        @media (min-width: 1400px) {
-            
-        }
+        @media (min-width: 1400px) {}
     </style>
 </head>
 
 <body>
-    <div class="container-md  bg-success bg-gradient bg-opacity-50" id="root">
-        <h1 class="display-1 text-white">Bootstrap<span> With faded secondary text</span></h1>
+    <div class="container-md">
+        <div class="row">
+            <div class="col border bg-success bg-opacity-50">
+                Occaecat est elit non magna. Anim magna velit aliquip ipsum. Aliqua labore sint voluptate labore cupidatat sint exercitation dolor duis duis adipisicing.
+            </div>
+            <div class="col border bg-primary bg-opacity-50">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, distinctio architecto? Minus eaque quia, ut laudantium recusandae similique rem nihil sapiente mollitia rerum sint ad illum reprehenderit deserunt molestias laborum.
+            </div>
+            <div class="col border bg-info bg-opacity-50">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas magni eum corrupti dolorem est repudiandae iure, itaque sapiente, minima, aliquid suscipit ipsum amet facilis ea expedita atque et asperiores accusamus.
+            </div>
+        </div>
     </div>
-    
-    
+
+
     <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
 </body>
 
