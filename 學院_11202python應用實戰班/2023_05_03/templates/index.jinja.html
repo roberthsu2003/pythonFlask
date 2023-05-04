@@ -1,56 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bootstrap</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
     <style>
         /* X-Small devices (portrait phones, less than 576px)*/
-        /* No media query for `xs` since this is the default in Bootstrap*/    
+        /* No media query for `xs` since this is the default in Bootstrap*/
         /*Small devices (landscape phones, 576px and up)*/
-            body {
-                background-color: antiquewhite;
-            }
+        body {
+            background-color: antiquewhite;
+        }
 
         @media (min-width: 576px) {
             body {
-                background-color:azure;
+                background-color: azure;
             }
         }
-    
+
         /*Medium devices (tablets, 768px and up)*/
         @media (min-width: 768px) {
             body {
-                background-color:beige;
+                background-color: beige;
             }
         }
-    
+
         /*Large devices (desktops, 992px and up)*/
         @media (min-width: 992px) {
             body {
-                background-color:coral;
+                background-color: coral;
             }
         }
-    
+
         /* X-Large devices (large desktops, 1200px and up) */
         @media (min-width: 1200px) {
             body {
-                background-color:darkcyan;
+                background-color: darkcyan;
             }
         }
-    
+
         /*XX-Large devices (larger desktops, 1400px and up) */
         @media (min-width: 1400px) {
             body {
-                background-color:darkgrey;
+                background-color: darkgrey;
             }
         }
     </style>
 </head>
+
 <body>
-    <h1>Bootstrap</h1>
+    <h1 class="display-1">Bootstrap<small class="text-muted">With faded secondary text</small></h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
     <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
 </body>
+
 </html>
