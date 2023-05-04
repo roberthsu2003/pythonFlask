@@ -6,6 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <title>Bootstrap</title>
     <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <style>
+        /* X-Small devices (portrait phones, less than 576px)*/
+        /* No media query for `xs` since this is the default in Bootstrap*/    
+        /*Small devices (landscape phones, 576px and up)*/
+            body {
+                background-color: antiquewhite;
+            }
+
+        @media (min-width: 576px) {
+            body {
+                background-color:azure;
+            }
+        }
+    
+        /*Medium devices (tablets, 768px and up)*/
+        @media (min-width: 768px) {
+            body {
+                background-color:beige;
+            }
+        }
+    
+        /*Large devices (desktops, 992px and up)*/
+        @media (min-width: 992px) {
+            body {
+                background-color:coral;
+            }
+        }
+    
+        /* X-Large devices (large desktops, 1200px and up) */
+        @media (min-width: 1200px) {
+            body {
+                background-color:darkcyan;
+            }
+        }
+    
+        /*XX-Large devices (larger desktops, 1400px and up) */
+        @media (min-width: 1400px) {
+            body {
+                background-color:darkgrey;
+            }
+        }
+    </style>
 </head>
 <body>
     <h1>Bootstrap</h1>
