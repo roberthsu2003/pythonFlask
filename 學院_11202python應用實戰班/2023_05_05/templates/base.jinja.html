@@ -10,6 +10,7 @@
     {% endblock %}
 </head>
 <body>
+    {{request.path}}
     <div class="container-md">
         <nav class="navbar navbar-expand-md navbar-light bg-light">
             <div class="container-fluid">
@@ -21,9 +22,9 @@
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav ms-auto">
                         <a class="nav-link" aria-current="page" href="/">Home</a>
-                        <a class="nav-link active" href="/features">Features</a>
-                        <a class="nav-link" href="/priceing">Pricing</a>
-                        <a class="nav-link" href="/about">About</a>
+                        <a class="nav-link active" href="/features/">Features</a>
+                        <a class="nav-link" href="/priceing/">Pricing</a>
+                        <a class="nav-link" href="/about/">About</a>
                     </div>
                 </div>
             </div>
