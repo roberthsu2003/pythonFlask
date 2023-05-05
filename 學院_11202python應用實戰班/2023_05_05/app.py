@@ -1,4 +1,5 @@
 from flask import Flask,render_template
+from flask import request
 
 app = Flask(__name__)
 @app.route("/")
@@ -19,4 +20,13 @@ def features():
 @app.route("/priceing/")
 def priceing():
     return render_template("priceing.jinja.html")
+
+@app.route("/about/")
+def about():
+    return render_template("about.jinja.html")
+
+
+
+
+
     
