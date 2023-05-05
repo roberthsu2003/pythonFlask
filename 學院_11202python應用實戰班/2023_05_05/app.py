@@ -12,6 +12,11 @@ def index():
     return render_template("index.jinja.html",content_data=data)
 
 
-@app.route("/learning/")
-def learning():
-    return render_template("learning.jinja.html")
+@app.route("/features/")
+def features():
+    return render_template("features.jinja.html")
+
+@app.route("/priceing/")
+def priceing():
+    return render_template("priceing.jinja.html")
+    
