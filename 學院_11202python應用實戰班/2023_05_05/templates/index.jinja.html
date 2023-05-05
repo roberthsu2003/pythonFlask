@@ -48,10 +48,10 @@
             </div>
         </nav>
 
-        <div class="row">
-            
+        <div class="row">            
+            {% set backgrounds = ["bg-info","bg-success","bg-primary"] %}
             {% for key,values in  content_data.items() %}                
-                <div class="col-12 col-md-6 col-xl-4 border {{bg[loop.index0]}} bg-opacity-50">
+                <div class="col-12 col-md-6 col-xl-4 border {{backgrounds[loop.index0]}} bg-opacity-50">
                     <h3>{{key}}</h3>
                     <p>{{values}}</p>
                 </div>
