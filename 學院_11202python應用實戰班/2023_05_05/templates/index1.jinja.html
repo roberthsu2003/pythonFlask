@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <style>
+        /* X-Small devices (portrait phones, less than 576px)*/
+        /* No media query for `xs` since this is the default in Bootstrap*/
+        /*Small devices (landscape phones, 576px and up)*/
+
+        @media (min-width: 576px) {}
+
+        /*Medium devices (tablets, 768px and up)*/
+        @media (min-width: 768px) {}
+
+        /*Large devices (desktops, 992px and up)*/
+        @media (min-width: 992px) {}
+
+        /* X-Large devices (large desktops, 1200px and up) */
+        @media (min-width: 1200px) {}
+
+        /*XX-Large devices (larger desktops, 1400px and up) */
+        @media (min-width: 1400px) {}
+    </style>
+</head>
+
+<body>
+    <div class="container-md">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link" href="#">Features</a>
+                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link disabled">Disabled</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="row">            
+            {% set backgrounds = ["bg-info","bg-success","bg-primary"] %}
+            {% for key,values in  content_data.items() %}                
+                <div class="col-12 col-md-6 col-xl-4 border {{backgrounds[loop.index0]}} bg-opacity-50">
+                    <h3>{{key}}</h3>
+                    <p>{{values}}</p>
+                </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+
+
+    <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+</body>
+
+</html>
