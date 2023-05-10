@@ -1,7 +1,7 @@
 {% extends "base.jinja.html" %}
 
 {% block head %}
-        {{ super() }}
+{{ super() }}
 {% endblock %}
 
 {% block title %}Home{% endblock %}
@@ -9,7 +9,7 @@
 {% block content %}
 <div class="container-md">
         <div class="table-responsive" style="max-height: 400px; overflow-y: scroll;">
-                <table class="table caption-top" >
+                <table class="table caption-top">
                         <caption>聯電</caption>
                         <thead>
                                 <tr>
@@ -21,25 +21,25 @@
                                         <th>收盤2</th>
                                         <th>成交量</th>
                                 </tr>
-                                
+
                         </thead>
                         <tbody>
                                 {% for rows in data %}
-                                        <tr>
-                                                {% for item in rows%}
-                                                        {% if loop.first%}
-                                                        <td>{{ item }}</td>
-                                                        {% elif loop.last %}
-                                                        <td>{{ "{:,d}".format(item) }}</td>
-                                                        {% else %}
-                                                        <td>{{ "{:.2f}".format(item) }}</td>
-                                                        {% endif %}
-                                                {% endfor %}
-                                        </tr>
+                                <tr>
+                                        {% for item in rows%}
+                                        {% if loop.first%}
+                                        <td>{{ item }}</td>
+                                        {% elif loop.last %}
+                                        <td>{{ "{:,d}".format(item) }}</td>
+                                        {% else %}
+                                        <td>{{ "{:.2f}".format(item) }}</td>
+                                        {% endif %}
+                                        {% endfor %}
+                                </tr>
                                 {% endfor %}
                         </tbody>
                 </table>
         </div>
-        
+
 </div>
 {% endblock %}
