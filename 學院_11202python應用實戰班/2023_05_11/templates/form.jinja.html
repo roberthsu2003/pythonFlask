@@ -1,0 +1,18 @@
+{% extends "base.jinja.html" %}
+
+{% block head %}
+    {{super()}}
+{% endblock %}
+
+{% block title%}
+    表單
+{% endblock %}
+
+{% block content%}
+    <div class="container-md">
+        <form action="" method="post">
+            <input type="text" name="username" placeholder="請填姓名" required>
+            <input type="submit" value="送出">
+        </form>
+    </div>
+{% endblock %}
