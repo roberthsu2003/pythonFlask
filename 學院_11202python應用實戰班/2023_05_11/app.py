@@ -24,11 +24,16 @@ def about():
     return render_template("about.jinja.html")
 
 @app.route("/form/",methods=['GET', 'POST'])
+
 def form():
-    if request.method == 'POST':
-        return render_template("form.jinja.html")
-    
     rows = datasource.get_stockid()
+    if request.method == 'POST':
+        stock_name = request.form['stock_name']
+        print(stock_name)
+        year =  request.form['year']
+        return render_template("form.jinja.html",rows=rows,stock_name=stock_name,year=year)
+    
+    
     return render_template("form.jinja.html",rows=rows)
     
 
