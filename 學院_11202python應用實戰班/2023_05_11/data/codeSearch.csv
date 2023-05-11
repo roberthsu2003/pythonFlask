@@ -1,4 +1,4 @@
-,上市有價證券種類,有價證券代號代碼,有價證券代號名稱,CFICode
+index,上市有價證券種類,code,name,CFICode
 0,股票,1101,台泥,ESVUFR
 1,股票,1102,亞泥,ESVUFR
 2,股票,1103,嘉泥,ESVUFR
