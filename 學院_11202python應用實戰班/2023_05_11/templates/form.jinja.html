@@ -11,17 +11,24 @@
 {% block content%}
     <div class="container-md">
         <form action="" method="post">
-            <input type="text" name="username" placeholder="請填姓名" required>
-            <select name="pets">
-                <option value="">請選擇你最愛的寵物</option>
-                <option value="dog">Dog</option>
-                <option value="cat" selected>Cat</option>
-                <option value="hamster">Hamster</option>
-                <option value="parrot">Parrot</option>
-                <option value="spider" disabled>Spider</option>
-                <option value="goldfish">Goldfish</option>
-            </select>
-            <input type="submit" value="送出">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>請選擇查詢股票:</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                </div>
+                <div class="col-12  col-sm-6">
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+                </div>
+            </div>
         </form>
     </div>
 {% endblock %}
