@@ -27,3 +27,31 @@ def get_stock_data(stockid):
     #stock_dataFrame1['Date'] = stock_dataFrame1['Date'].map(lambda x:f'{x.year}-{x.month}-{x.day}')
     stock_list = stock_dataFrame.to_numpy().tolist()
     return stock_list
+
+import sqlite3
+from sqlite3 import Error
+def get_stockid():
+    def create_connection(db_file):
+        conn = None
+        try:
+            conn = sqlite3.connect(db_file)
+        except Error as e:
+            print(e)
+        return conn
+    
+    def select_all_tasks(conn):
+        sql ="SELECT  code,name FROM codeSearch"
+        cursor = conn.cursor()
+        cursor.execute(sql)
+        rows = cursor.fetchall()
+        return rows
+    
+    current = os.path.abspath("./")
+    filename = "code.db"
+    db_file_path = os.path.join(current,'data',filename)
+    con = create_connection(db_file_path)
+    rows = select_all_tasks(con)
+    con.close()
+    return rows
+    
+

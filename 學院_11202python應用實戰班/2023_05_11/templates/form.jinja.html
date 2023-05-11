@@ -15,14 +15,14 @@
                 <div class="col-12 col-sm-6">
                 <select class="form-select" aria-label="Default select example">
                     <option selected>請選擇查詢股票:</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    {% for code,name in rows%}
+                        <option value="{{code}}">{{"{:}-{:}".format(code,name)}}</option>
+                    {% endfor %}
                 </select>
                 </div>
                 <div class="col-12  col-sm-6">
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Open this select menu</option>
+                <select class="form-select" aria-label="Default select example" disabled>
+                    <option selected>選擇年份</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
