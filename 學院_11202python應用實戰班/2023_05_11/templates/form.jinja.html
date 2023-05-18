@@ -79,9 +79,22 @@
                                         {% endfor %}
                                 </tbody>
                         </table>
-                </div>
-        
+                </div>            
         </div>
+        
     {% endif%}
+    
     </div>
+
+    <!---畫圖-->
+    {% if graphJSON %}
+    <div class="container-md">
+        <div id="chart" style="max-width:1200px;overflow-y: scroll;"></div>
+        <script src="https://cdn.plot.ly/plotly-2.20.0.min.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            let graphs = {{ graphJSON | safe }}
+            Plotly.newPlot('chart',graphs,{})
+        </script>
+    </div>
+    {% endif %}
 {% endblock %}
