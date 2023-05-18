@@ -28,6 +28,7 @@ def get_stock_data(stockid):
     stock_list = stock_dataFrame.to_numpy().tolist()
     return stock_list
 
+
 import sqlite3
 from sqlite3 import Error
 def get_stockid():
@@ -54,4 +55,38 @@ def get_stockid():
     con.close()
     return rows
     
+
+''' MySQL連線
+import pymysql.cursors
+
+def get_stockid():
+    def create_connection():
+        conn = None
+        import pymysql.cursors
+        conn = pymysql.connect(host='sql12.freesqldatabase.com',
+                            user='sql12619124',
+                            password='7UX5edFz35',
+                            database='sql12619124',
+                            charset='utf8mb4',
+                            port=3306,
+                            cursorclass=pymysql.cursors.DictCursor)
+        return conn
+
+    
+    def select_all_tasks(conn):
+        sql ="SELECT  code,name FROM codeTable"
+        with conn.cursor() as cursor:
+            cursor.execute(sql)
+            rows = cursor.fetchall()
+            return rows
+    
+    
+    conn = create_connection()
+    rows = select_all_tasks(conn)
+    conn.close()
+    return rows
+    
+'''
+
+
 
