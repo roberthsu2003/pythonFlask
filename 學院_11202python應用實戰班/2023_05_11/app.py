@@ -3,9 +3,11 @@ import json
 import plotly
 import plotly.express as px
 import datasource
-
+from auth import auth
 
 app = Flask(__name__)
+app.register_blueprint(auth,url_prefix="/auth")
+
 @app.route("/",methods=['GET', 'POST'])
 def index():
     #stock_data = datasource.get_stock_data(stockid=2330)    
