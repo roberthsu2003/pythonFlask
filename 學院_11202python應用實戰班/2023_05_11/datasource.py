@@ -27,15 +27,15 @@ def get_stock_data(stockid,year='all'):
     #stock_dataFrame1 = stock_dataFrame.reset_index()
     #stock_dataFrame1['Date'] = stock_dataFrame1['Date'].map(lambda x:f'{x.year}-{x.month}-{x.day}')
     if year == 'all':
-        pass
+        return stock_dataFrame
     else:
         startYear = f'{year}-1-1'
         stopYear = f'{year}-12-31'        
         stock_dataFrame['Date'] = pd.to_datetime(stock_dataFrame['Date'])     
         mask = (stock_dataFrame['Date'] >= startYear) & (stock_dataFrame['Date'] <= stopYear)
         year_stock_data = stock_dataFrame.loc[mask]
-        stock_list = year_stock_data.to_numpy().tolist()
-    return stock_list
+        #stock_list = year_stock_data.to_numpy().tolist()
+    return year_stock_data
 
 
 import sqlite3
