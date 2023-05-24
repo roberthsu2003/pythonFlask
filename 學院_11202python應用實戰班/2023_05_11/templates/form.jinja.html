@@ -81,7 +81,18 @@
                         </table>
                 </div>
         
-        </div>
-    {% endif%}
+            </div>
+        {% endif %}
+
+        {% if graphJSON %}
+            <div class="container-md">
+                <div id="chart"></div>                
+            </div>
+            <script src="https://cdn.plot.ly/plotly-2.20.0.min.js" charset="utf-8"></script>
+            <script type="text/javascript">
+                let graphs = {{graphJSON | safe}}
+                Plotly.newPlot('chart',graphs)
+            </script>
+        {% endif %}
     </div>
 {% endblock %}

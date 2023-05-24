@@ -1,5 +1,8 @@
 from flask import Flask,render_template,request
 import datasource
+import plotly.express as px
+import json
+import plotly
 
 
 app = Flask(__name__)
@@ -12,7 +15,10 @@ def index():
         year =  request.form['year']
         stock_dataFrame = datasource.get_stock_data(stockid=stock_id,year=year)  
         stock_data = stock_dataFrame.to_numpy().tolist()
-        return render_template("form.jinja.html",rows=rows,stock_name=stock_name,year=year,data=stock_data)  
+        #plotly express
+        fig = px.line(stock_dataFrame,x="Date",y="Adj Close",title=f'{stock_name}_{year}')
+        graphJSON = json.dumps(fig,cls=plotly.utils.PlotlyJSONEncoder)
+        return render_template("form.jinja.html",rows=rows,stock_name=stock_name,year=year,data=stock_data,graphJSON=graphJSON)  
     return render_template("form.jinja.html",rows=rows)
 
 
