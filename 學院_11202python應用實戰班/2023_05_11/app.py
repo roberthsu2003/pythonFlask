@@ -9,21 +9,21 @@ def index():
     return render_template("index.jinja.html",data=stock_data)
 
 
-@app.route("/features/")
+@app.route("/features")
 def features():
     
     return render_template("features.jinja.html")
 
-@app.route("/priceing/")
+@app.route("/priceing")
 def priceing():
     
     return render_template("priceing.jinja.html")
 
-@app.route("/about/")
+@app.route("/about")
 def about():
     return render_template("about.jinja.html")
 
-@app.route("/form/",methods=['GET', 'POST'])
+@app.route("/form",methods=['GET', 'POST'])
 def form():
     rows = datasource.get_stockid()
     if request.method == 'POST':
