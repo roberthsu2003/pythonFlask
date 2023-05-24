@@ -23,7 +23,7 @@ def priceing():
 def about():
     return render_template("about.jinja.html")
 
-@app.route("/form",methods=['GET', 'POST'])
+@app.route("/form/",methods=['GET', 'POST'])
 def form():
     rows = datasource.get_stockid()
     if request.method == 'POST':
