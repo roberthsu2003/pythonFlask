@@ -2,11 +2,18 @@
 <html lang="en">
 <head>
     {% block head %}
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="{{url_for('static', filename='base.css')}}" />
     <title>{% block title %}{% endblock %} - My Webpage</title>
     {% endblock %}
 </head>
 <body>
+    <nav>
+        <ul>
+            <li><a href="{{url_for('index')}}">圖表1</a></li>
+            <li><a href="{{url_for('index1')}}">圖表2</a></li>
+            <li><a href="{{url_for('index2')}}">圖表3</a></li>
+        </ul>
+    </nav>
     <div id="content">{% block content %}{% endblock %}</div>
     <div id="footer">
         {% block footer %}

@@ -1,0 +1,20 @@
+{% extends "base.jinja.html" %}
+{% block title %}Index{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style type="text/css">
+        
+    </style>
+{% endblock %}
+{% block content %}
+    <h1>圖表2</h1>
+    <div id="chart" class="chart" style="max-width: 1200;overflow: auto;">
+
+    </div>
+    <script src="https://cdn.plot.ly/plotly-2.20.0.min.js" charset="utf-8"></script>
+    <script type="text/javascript">        
+        var graphs = {{graphJSON | safe}};
+        Plotly.newPlot('chart',graphs,{});     
+    </script>
+
+{% endblock %}
