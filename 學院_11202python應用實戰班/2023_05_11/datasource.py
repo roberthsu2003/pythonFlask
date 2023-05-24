@@ -7,9 +7,10 @@ import os
 from datetime import datetime
 import pandas as pd
 
-def get_stock_data(stockid):
+def get_stock_data(stockid,year='all'):
     '''
-    @parma stockid是股票代碼
+    @param stockid是股票代碼
+    @param year 是年份
     '''
     yf.pdr_override()
     stockid_str = f'{stockid}.TW'   
@@ -22,10 +23,18 @@ def get_stock_data(stockid):
         stock_dataFrame = pdr.get_data_yahoo(stockid_str)
         stock_dataFrame.to_csv(csv_file_path)
     stock_dataFrame = pd.read_csv(csv_file_path)
-    print(stock_dataFrame)
+    #print(stock_dataFrame)
     #stock_dataFrame1 = stock_dataFrame.reset_index()
     #stock_dataFrame1['Date'] = stock_dataFrame1['Date'].map(lambda x:f'{x.year}-{x.month}-{x.day}')
-    stock_list = stock_dataFrame.to_numpy().tolist()
+    if year == 'all':
+        pass
+    else:
+        startYear = f'{year}-1-1'
+        stopYear = f'{year}-12-31'        
+        stock_dataFrame['Date'] = pd.to_datetime(stock_dataFrame['Date'])     
+        mask = (stock_dataFrame['Date'] >= startYear) & (stock_dataFrame['Date'] <= stopYear)
+        year_stock_data = stock_dataFrame.loc[mask]
+        stock_list = year_stock_data.to_numpy().tolist()
     return stock_list
 
 

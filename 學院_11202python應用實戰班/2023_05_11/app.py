@@ -9,8 +9,8 @@ def index():
     if request.method == 'POST':
         stock_name = request.form['stock_name']  #1203-味王
         stock_id = stock_name[:4]
-        stock_data = datasource.get_stock_data(stockid=stock_id)
         year =  request.form['year']
+        stock_data = datasource.get_stock_data(stockid=stock_id,year=year)        
         return render_template("form.jinja.html",rows=rows,stock_name=stock_name,year=year,data=stock_data)
     
     
