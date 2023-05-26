@@ -1,4 +1,4 @@
-.idea/*
-.idea/misc.xml
-venv/*
-code/.idea
+.idea
+venv
+__pycache__
+
