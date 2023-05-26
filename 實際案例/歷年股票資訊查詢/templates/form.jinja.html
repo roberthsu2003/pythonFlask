@@ -1,0 +1,107 @@
+{% extends "base.jinja.html" %}
+
+{% block head %}
+    {{super()}}
+{% endblock %}
+
+{% block title%}
+    表單
+{% endblock %}
+
+{% block content%}
+    <div class="container-md">
+        <form action="" method="post">
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                <select class="form-select" aria-label="Default select example" name="stock_name">
+                    <option selected>請選擇查詢股票:</option>
+                    {% for code,name in rows%}
+                        <option value="{{'{:}-{:}'.format(code,name)}}">{{"{:}-{:}".format(code,name)}}</option>
+                    {% endfor %}
+                </select>
+                </div>
+                <div class="col-12  col-sm-6">
+                <select class="form-select" aria-label="Default select example" name="year">
+                    <option selected>選擇年份</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                </select>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-5">查詢</button>
+        </form>
+
+        
+
+        
+            
+            
+        
+    </div>
+        
+
+    {% if data %}
+
+        
+        <div class="container-md">
+            {% if stock_name %}
+                <h2>{{stock_name}}({{year}})</h2>
+            {% endif %}
+            <div class="table-responsive" style="max-height: 400px; overflow-y: scroll;">
+                    <table class="table caption-top">
+                            
+                            <thead>
+                                    <tr>
+                                            <th>日期</th>
+                                            <th>開盤</th>
+                                            <th>最高</th>
+                                            <th>最低</th>
+                                            <th>收盤1</th>
+                                            <th>收盤2</th>
+                                            <th>成交量</th>
+                                    </tr>
+    
+                            </thead>
+                            <tbody>
+                                    {% for rows in data %}
+                                    <tr>
+                                            {% for item in rows%}
+                                            {% if loop.first%}
+                                            <td>{{ item }}</td>
+                                            {% elif loop.last %}
+                                            <td>{{ "{:,d}".format(item) }}</td>
+                                            {% else %}
+                                            <td>{{ "{:.2f}".format(item) }}</td>
+                                            
+                                            {% endif %}
+                                            {% endfor %}
+                                    </tr>
+                                    {% endfor %}
+                            </tbody>
+                    </table>
+            </div>
+    
+        </div>
+    {% endif %}
+
+    {% if graphJSON %}
+    <div class="container-md">
+        <div id="chart" style="max-width:1200px;overflow:auto;"></div>
+        <script src="https://cdn.plot.ly/plotly-2.20.0.min.js" charset="utf-8"></script>
+        <script type="text/javascript">
+        let graphs = {{graphJSON | safe}}
+        Plotly.newPlot('chart',graphs)
+        </script>                
+    </div>
+    {% endif %}
+{% endblock %}
