@@ -1,10 +1,10 @@
-from flask import Blueprint
+from flask import Blueprint,render_template
 
-api1 = Blueprint("api",__name__,url_prefix="/api")
+api1 = Blueprint("api",__name__,url_prefix="/api",template_folder="templates")
 from . import youbike,error,stockCode
 
 @api1.route("/")
 def api():
-    return "Hello! 本目錄提供Web api"
+    return render_template('api.html')
 
 
