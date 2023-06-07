@@ -5,3 +5,7 @@ app = Flask(__name__)
 def index():    
     return render_template('index.jinja.html')
 
+@app.route("/login")
+def login():
+    return render_template('login.jinja.html')
+
