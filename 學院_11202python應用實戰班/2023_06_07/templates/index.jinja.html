@@ -7,6 +7,9 @@
     </style>
 {% endblock %}
 {% block content %}
+    {% if session['email'] %}
+        會員名稱:{{ session['email'] }}
+    {% endif %}
     <h1>會員登入</h1>
     <p class="important">
         學習如何登入會員

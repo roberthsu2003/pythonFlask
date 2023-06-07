@@ -1,6 +1,7 @@
-from flask import Flask,render_template,request,url_for,redirect
+from flask import Flask,render_template,request,url_for,redirect,session
 
 app = Flask(__name__)
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 
 @app.route("/")
@@ -15,6 +16,7 @@ def login():
         error = None
     if request.method == 'POST':
         if request.form['email'] == 'robert@gmail.com' and request.form['pwd'] == '12345':
+            session['email'] = request.form['email']
             return redirect(url_for('index'))
         else:
             error="密碼錯誤"
