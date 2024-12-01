@@ -11,7 +11,7 @@
 1. [安裝Flask](./安裝Flask)
 2. [基本應用程式架構](./基本應用程式架構)
 3. [Jinja2網頁樣板](./網頁樣板)
-	- [pagination(分頁)](./網頁樣版/pagination)
+	- [pagination(分頁)](./網頁樣版/pagination/)
 4. [網頁表單](./網頁表單)
 5. [資料庫](./資料庫)
 6. [Email](./email)
