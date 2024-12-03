@@ -1,5 +1,5 @@
 # 動態導覽列
-1. **使用{% include 'xxxx.j2'%}
+### 1. **使用{% include 'xxxx.j2'%}
 
 **base.j2**
 
@@ -38,7 +38,7 @@
 </ul>
 ```
 
-2. **使用macro和import
+### 2. **使用macro和import
 
 ** _macros.j2 **
 
